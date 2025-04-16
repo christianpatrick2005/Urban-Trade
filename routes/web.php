@@ -39,6 +39,10 @@ Route::get('chart', function () {
     return view('chart-css');
 });
 
+Route::get('trading', function () {
+    return view('userinterface/trading');
+});
+
 // Route::get('donasi', function () {
 //     return view('donasi');
 // });
