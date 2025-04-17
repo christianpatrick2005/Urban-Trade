@@ -1,8 +1,8 @@
 <!--Main Navigation-->
-<header>
+<header class="fixed-top">
 
     <!-- Jumbotron -->
-    <div class="p-3 text-center" style="background-color: #00043c">
+    <div class="p-3 text-center" style="background-color: rgb(66, 63, 63)">
       <div class="container">
         <div class="row">
 
@@ -34,59 +34,64 @@
     </div>
     <!-- Jumbotron -->
   
-    
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg border-bottom" data-bs-theme="dark" style="background-color: #2b0b70">
-      
-      <!-- Container wrapper -->
-      <div class="container justify-content-end">
-        <!-- Left links -->
-        <div class="navbar-nav">
-          <button class="navbar-toggler ml-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-          </button>
-        </div>
-
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="{{ route('home') }}">Home</a>
-            </li>
-            <div class="dropdown">
-              <a class="nav-link dropsown-toggle" role="button" data-bs-toggle="dropdown">
-                <span>Kategori</span>
-              </a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item btn" type="button" href="">Arcade</a></li>
-                <li><a class="dropdown-item btn" type="button" href="">Loterry</a></li>
-                <li><a class="dropdown-item btn" type="button" href="">Sport Bet</a></li>
-                <li><a class="dropdown-item btn" type="button" href="">Game percobaan</a></li>
-              </ul>
-            </div>
-            <li class="nav-item">
-              <a class="nav-link" href="">Berita</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="">Promo</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="">Tentang Kami</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="">Hubungi Kami</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="">Tarik tunai</a>
-            </li>
-          </ul>
-                  
-        </div>
-
+    <div class="row border-bottom g-0">
+      <div class="col" style="background-color: #2c2c2c">
+        @include('partials/offcanvas')
       </div>
-      <!-- Container wrapper -->
-    </nav>
-    <!-- Navbar -->
-    
-    @include('partials/infiniteSlider')
+      <div class="col-11">
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg" data-bs-theme="dark" style="background-color: #2c2c2c">
+          
+          <!-- Container wrapper -->
+          <div class="container justify-content-end">
+            <!-- Left links -->
+            <div class="navbar-nav">
+              <button class="navbar-toggler ml-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+              </button>
+            </div>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                  <a class="nav-link" href="{{ route('home') }}">Home</a>
+                </li>
+                <div class="dropdown">
+                  <a class="nav-link dropsown-toggle" role="button" data-bs-toggle="dropdown">
+                    <span>Kategori</span>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item btn" type="button" href="">Arcade</a></li>
+                    <li><a class="dropdown-item btn" type="button" href="">Loterry</a></li>
+                    <li><a class="dropdown-item btn" type="button" href="">Sport Bet</a></li>
+                    <li><a class="dropdown-item btn" type="button" href="">Game percobaan</a></li>
+                  </ul>
+                </div>
+                <li class="nav-item">
+                  <a class="nav-link" href="">Berita</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="">Promo</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="">Tentang Kami</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="">Hubungi Kami</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="">Tarik tunai</a>
+                </li>
+              </ul>
+                      
+            </div>
+
+          </div>
+          <!-- Container wrapper -->
+        </nav>
+        <!-- Navbar -->
+      </div>
+    </div>
+
   </header>
   <!--Main Navigation-->

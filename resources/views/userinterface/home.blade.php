@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-bs-theme="dark">
+<html lang="en" >
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,7 +16,10 @@
     }
   </style>
 </head>
-<body class="">
+<body class="" style="background-color: #1e1e1e; padding-top: 130px">
+  {{-- infinite slider --}}
+  @include('partials/infiniteSlider')
+  
     {{-- NAVBAR --}}
     @include('partials/navbar')
 
@@ -54,43 +57,43 @@
     </div>
 
     {{-- jackpot gif --}}
-    <div class="container text-center mt-5">
+    {{-- <div class="container text-center mt-5">
       <div class="position-relative">
           <img src="{{ asset('images/jackpot.gif') }}" class="img-fluid mt-3" alt="Animated GIF">
           <div id="counter" class="position-absolute top-50 start-50 translate-middle mt-3 mt-md-3 mt-lg-4 text-light fs-1 fs-md-2" style="font-family: fantasy">
               IDR <span id="count">10 </span>
           </div>
       </div>
-    </div>
+    </div> --}}
     
     {{-- CARD berbagai Game --}}
-    <div class="container mt-5 p-3 rounded-4 border border-3 border-primary" style="background-color: #00043c">
+    <div class="container mt-5 p-3 rounded-4 border border-3 border-success" style="background-color: #2c2c2c">
       <h1 class="text-center mb-3 text-light">Games</h1>
       <div class="row justify-content-center">
         <div class="col-auto mb-4">
-          <div class="card rounded-4 border border-3 border-dark" style="width: 18rem; background-color: #2b0b70">
+          <div class="card rounded-4 border border-3 border-success" style="width: 18rem; background-color: rgb(66, 63, 63)">
             <img src="https://res.cloudinary.com/rey0303/image/upload/v1727615283/judibola.xyz_dpavqm.png" class="card-img-top" alt="...">
             <div class="card-body">
               <h5 class="card-title text-light">Sport Bet</h5>
-              <a href="" class="btn btn-primary">Play Now</a>
+              <a href="" class="btn btn-success">Play Now</a>
             </div>
           </div>
         </div>
         <div class="col-auto mb-4">
-          <div class="card rounded-4 border border-3 border-dark" style="width: 18rem; background-color: #2b0b70">
+          <div class="card rounded-4 border border-3 border-success" style="width: 18rem; background-color: rgb(66, 63, 63)">
             <img src="https://img.viva88athenae.com/pp/images/vs5triple8gold.png" class="card-img-top" alt="...">
             <div class="card-body">
               <h5 class="card-title text-light">Slot</h5>
-              <a href="" class="btn btn-primary">Play Now</a>
+              <a href="" class="btn btn-success">Play Now</a>
             </div>
           </div>
         </div>
         <div class="col-auto mb-4">
-          <div class="card rounded-4 border border-3 border-dark" style="width: 18rem; background-color: #2b0b70">
+          <div class="card rounded-4 border border-3 border-success" style="width: 18rem; background-color: rgb(66, 63, 63)">
             <img src="https://img.viva88athenae.com/mg/images/smg_treasurestacks_icon_square_250x250_en.png" class="card-img-top" alt="...">
             <div class="card-body">
               <h5 class="card-title text-light">Gambling</h5>
-              <a href="" class="btn btn-primary">Play Now</a>
+              <a href="" class="btn btn-success">Play Now</a>
             </div>
           </div>
         </div>
@@ -99,7 +102,7 @@
 
 
     {{-- pembayaran --}}
-    <div class="container mt-5 p-3 rounded-4 border border-3 border-primary" style="background-color: black">
+    <div class="container mt-5 p-3 rounded-4 border border-3 border-success" style="background-color: #2c2c2c">
       <div class="row g-2 text-light">
         <div class="border-bottom border-3">
           <h1>Sistem Pembayaran</h1>

@@ -1,7 +1,7 @@
       <!-- Footer -->
       <footer
               class="text-center text-lg-start text-white mt-5"
-              style="background-color: #2b0b70"
+              style="background-color: rgb(66, 63, 63)"
               >
         <!-- Grid container -->
         <div class="container p-4 pb-0">
@@ -109,7 +109,7 @@
         <!-- Grid container -->
     
         <!-- Copyright -->
-        <div class="text-center p-3" style="background-color: #00043c">
+        <div class="text-center p-3" style="background-color: #2c2c2c">
 
           &copy; 2024 - <span id="year"></span> Urban Slot  Copyright
           <a class="text-white" href="https://UrbanSlot.com/">UrbanSlot.com</a>. All Rights Reserved.
