@@ -7,12 +7,39 @@
     <link rel="icon" type="image/svg+xml" href="{{ asset('images/logo.png') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/charts.css/dist/charts.min.css">
+
   <style>
     aside {
       position: fixed;
       top: 50%;
       left: 0;
       transform: translateY(-50%);
+    }
+
+    #my-chart {
+      width: 100%;
+      max-width: 200px;
+      margin: 0 auto;
+    }
+
+    .change-positive {
+      background-color: #d1fae5;
+      color: #10b981;
+      padding: 0.25rem 0.5rem;
+      border-radius: 0.375rem;
+      font-size: 0.75rem;
+      font-weight: 500;
+      display: inline-block;
+    }
+    .change-negative {
+      background-color: #fef2f2;
+      color: #ef4444;
+      padding: 0.25rem 0.5rem;
+      border-radius: 0.375rem;
+      font-size: 0.75rem;
+      font-weight: 500;
+      display: inline-block;
     }
   </style>
 </head>
@@ -98,6 +125,70 @@
           </div>
         </div>
       </div>
+    </div>
+
+    {{-- tabel koin --}}
+    <div class="container p-4 mt-4 border border-solid">
+      <table class="table table-dark table-hover text-center">
+        <thead>
+          <tr>
+            <th scope="col ">Nama Koin</th>
+            <th scope="col">Harga Terakhir</th>
+            <th scope="col">presentase</th>
+            <th scope="col">Grafik</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="align-middle">BTC</td>
+            <td class="align-middle">14.000</td>
+            <td class="align-middle">13%</td>
+            <td class="w-50">
+              <div id="my-chart" class="d-flex justify-content-center align-items-center">
+                <table class="charts-css area show-labels">
+                  <tbody>
+                    <tr><td style="--start: 0.2; --end: 0.4;"><span class="data">$40K</span></td></tr>
+                    <tr><td style="--start: 0.4; --end: 0.6;"><span class="data">$42K</span></td></tr>
+                    <tr><td style="--start: 0.6; --end: 0.5;"><span class="data">$41K</span></td></tr>
+                  </tbody>
+                </table>
+              </div>              
+            </td>
+          </tr>
+          <tr>
+            <td class="align-middle">BTC</td>
+            <td class="align-middle">14.000</td>
+            <td class="align-middle">13%</td>
+            <td class="w-50">
+              <div id="my-chart" class="d-flex justify-content-center align-items-center">
+                <table class="charts-css area show-labels">
+                  <tbody>
+                    <tr><td style="--start: 0.2; --end: 0.4;"><span class="data">$40K</span></td></tr>
+                    <tr><td style="--start: 0.4; --end: 0.6;"><span class="data">$42K</span></td></tr>
+                    <tr><td style="--start: 0.6; --end: 0.5;"><span class="data">$41K</span></td></tr>
+                  </tbody>
+                </table>
+              </div>              
+            </td>
+          </tr>
+          <tr>
+            <td class="align-middle">BTC</td>
+            <td class="align-middle">14.000</td>
+            <td class="align-middle">13%</td>
+            <td class="w-50">
+              <div id="my-chart" class="d-flex justify-content-center align-items-center">
+                <table class="charts-css area show-labels">
+                  <tbody>
+                    <tr><td style="--start: 0.2; --end: 0.4;"><span class="data">$40K</span></td></tr>
+                    <tr><td style="--start: 0.4; --end: 0.6;"><span class="data">$42K</span></td></tr>
+                    <tr><td style="--start: 0.6; --end: 0.5;"><span class="data">$41K</span></td></tr>
+                  </tbody>
+                </table>
+              </div>              
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
 
 
