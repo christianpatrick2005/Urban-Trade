@@ -1,4 +1,28 @@
 <!--Main Navigation-->
+<style>
+      .btc-box {
+      border: 1px solid #ddd;
+      border-radius: 2rem;
+      padding: 0.25rem 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .btc-icon {
+      background-color: orange;
+      color: white;
+      border-radius: 50%;
+      padding: 0.3rem;
+    }
+
+    .navbar-end {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+</style>
 <header class="fixed-top">
 
     <!-- Jumbotron -->
@@ -15,6 +39,7 @@
   
           <!-- money elements -->
           <div class="col-md-4 mt-2">
+            <p1 class="" style="color: white"> Rp 10.000</p1>
             {{-- <h1 style="color:white;">Rp {{ number_format(Auth::user()->saldo, 10, ',', '.') }}</h1> --}}
           </div>
           <!-- search elements -->
@@ -40,54 +65,28 @@
       </div>
       <div class="col-11">
         <!-- Navbar -->
-        <nav class="navbar navbar-expand-lg" data-bs-theme="dark" style="background-color: #2c2c2c">
-          
-          <!-- Container wrapper -->
-          <div class="container justify-content-end">
-            <!-- Left links -->
-            <div class="navbar-nav">
-              <button class="navbar-toggler ml-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
-              </button>
-            </div>
+        <nav class="navbar text-light px-3" style="background-color: #2c2c2c">
+          <div class="container-fluid">
+            <div class="navbar-end">
+              <div class="btc-box">
+                <img src="https://indodax.com/v2/logo/svg/color/btc.svg" alt="">
+                <span>1 BTC = Rp 1.439.012.000</span>
+              </div>
+                
+              <div class="dropdown">
+                <button class="btn btn-outline-primary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                  Menu
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end">
+                  <li><a class="dropdown-item" href="#">Profil</a></li>
+                  <li><a class="dropdown-item" href="#">Pengaturan</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">Keluar</a></li>
+                </ul>
+              </div>
 
-            <div class="collapse navbar-collapse" id="navbarNav">
-              <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                  <a class="nav-link" href="{{ route('home') }}">Home</a>
-                </li>
-                <div class="dropdown">
-                  <a class="nav-link dropsown-toggle" role="button" data-bs-toggle="dropdown">
-                    <span>Kategori</span>
-                  </a>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item btn" type="button" href="">Arcade</a></li>
-                    <li><a class="dropdown-item btn" type="button" href="">Loterry</a></li>
-                    <li><a class="dropdown-item btn" type="button" href="">Sport Bet</a></li>
-                    <li><a class="dropdown-item btn" type="button" href="">Game percobaan</a></li>
-                  </ul>
-                </div>
-                <li class="nav-item">
-                  <a class="nav-link" href="">Berita</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="">Promo</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="">Tentang Kami</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="">Hubungi Kami</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="">Tarik tunai</a>
-                </li>
-              </ul>
-                      
             </div>
-
           </div>
-          <!-- Container wrapper -->
         </nav>
         <!-- Navbar -->
       </div>

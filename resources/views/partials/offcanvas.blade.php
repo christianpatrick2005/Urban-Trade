@@ -26,7 +26,7 @@
   <!-- Offcanvas Sidebar -->
   <div class="offcanvas offcanvas-start text-bg-dark" data-bs-scroll="true" tabindex="-1" id="offcanvasMenu" aria-labelledby="offcanvasMenuLabel">
     <div class="offcanvas-header">
-      <h5 class="offcanvas-title" id="offcanvasMenuLabel">Menu</h5>
+      <h5 class="offcanvas-title" id="offcanvasMenuLabel">Urban Trade</h5>
       <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
@@ -41,7 +41,6 @@
     </div>
   </div>
   
-  <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  
   </body>
   </html>

@@ -23,35 +23,79 @@
       margin: 0 auto;
     }
 
-    .change-positive {
-      background-color: #d1fae5;
-      color: #10b981;
-      padding: 0.25rem 0.5rem;
-      border-radius: 0.375rem;
-      font-size: 0.75rem;
-      font-weight: 500;
-      display: inline-block;
+
+    .word-slide {
+      font-weight: bold;
+      position: relative;
+      overflow: hidden;
+      height: 41px;
+      width: 300px;
+      text-align: center;
     }
-    .change-negative {
-      background-color: #fef2f2;
-      color: #ef4444;
-      padding: 0.25rem 0.5rem;
-      border-radius: 0.375rem;
-      font-size: 0.75rem;
-      font-weight: 500;
-      display: inline-block;
+
+    .word {
+      position: absolute;
+      opacity: 0;
+      animation: slide 8s infinite;
     }
+
+    .word:nth-child(2) { animation-delay: 2s; }
+    .word:nth-child(3) { animation-delay: 4s; }
+    .word:nth-child(4) { animation-delay: 6s; }
+
+    @keyframes slide {
+      0% { opacity: 0; transform: translateY(100%); }
+      10% { opacity: 1; transform: translateY(0); }
+      25% { opacity: 1; transform: translateY(0); }
+      35% { opacity: 0; transform: translateY(-100%); }
+      100% { opacity: 0; transform: translateY(-100%); }
+    }
+
   </style>
 </head>
 <body class="" style="background-color: #1e1e1e; padding-top: 130px">
   {{-- infinite slider --}}
-  @include('partials/infiniteSlider')
+  {{-- @include('partials/infiniteSlider') --}}
   
     {{-- NAVBAR --}}
     @include('partials/navbar')
 
+    <div class="container text-white" style="margin-top: 100px">
+      <h1 class="" style="font-size: 80px">
+        Platform Trading<br>
+        Aset Kripto <span class="highlight" style="color: rgb(61, 227, 61)">Terpercaya</span>
+      </h1>
+      <p class="tagline fs-1">Investasi mudah dan aman untuk <strong>#AsetMasaDepan</strong></p>
+  
+      <h2 class=" fs-1">
+        Investasi Trading 
+        untuk
+        <span class="word-slide text-light d-inline-block">
+          <div class="word">Pensiunan</div>
+          <div class="word">Mahasiswa</div>
+          <div class="word">Pekerja</div>
+          <div class="word">Pengangguran</div>
+        </span>
+      </h2>
+  
+      <div class="d-flex justify-content-center flex-wrap gap-4 mt-4">
+        <div class="text-center">
+          <strong>Sejak 2014</strong>
+          Pertama di Indonesia
+        </div>
+        <div class="text-center">
+          <strong>400+ Koin</strong>
+          Aset Kripto Terdaftar
+        </div>
+        <div class="text-center">
+          <strong>7.5 Juta</strong>
+          Member Terdaftar
+        </div>
+      </div>
+    </div>
+
     {{-- CAROUSEL --}}
-    <div id="CarouselSlot" class="carousel slide mt-3" data-bs-ride="carousel">
+    {{-- <div id="CarouselSlot" class="carousel slide mt-3" data-bs-ride="carousel">
         <div class="carousel-indicators">
             <button type="button" data-bs-target="#CarouselSlot" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
             <button type="button" data-bs-target="#CarouselSlot" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -61,16 +105,16 @@
 
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img src="{{ asset('images/Carousel slot.png') }}" class="d-block w-100" alt="...">
+            <img src="https://blog.indodax.com/wp-content/uploads/2025/04/Cuan-Sesimple-Itu_April-2025_Blog-1200x520-2.png" class="d-block " width="500px" alt="...">
           </div>
           <div class="carousel-item">
-            <img src="{{ asset('images/Carousel slot 2.png') }}" class="d-block w-100" alt="...">
+            <img src="https://blog.indodax.com/wp-content/uploads/2025/04/Cuan-Sesimple-Itu_April-2025_Blog-1200x520-2.png" class="d-block " width="500px" alt="...">
           </div>
           <div class="carousel-item">
-            <img src="{{ asset('images/Carousel slot 3.jpg') }}" class="d-block w-100" alt="...">
+            <img src="https://blog.indodax.com/wp-content/uploads/2025/04/Cuan-Sesimple-Itu_April-2025_Blog-1200x520-2.png" class="d-block " width="500px" alt="...">
           </div>
           <div class="carousel-item">
-            <img src="{{ asset('images/Carousel slot 4.jpg') }}" class="d-block w-100" alt="...">
+            <img src="https://blog.indodax.com/wp-content/uploads/2025/04/Cuan-Sesimple-Itu_April-2025_Blog-1200x520-2.png" class="d-block" width="500px" alt="...">
           </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#CarouselSlot" data-bs-slide="prev">
@@ -81,16 +125,6 @@
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Next</span>
         </button>
-    </div>
-
-    {{-- jackpot gif --}}
-    {{-- <div class="container text-center mt-5">
-      <div class="position-relative">
-          <img src="{{ asset('images/jackpot.gif') }}" class="img-fluid mt-3" alt="Animated GIF">
-          <div id="counter" class="position-absolute top-50 start-50 translate-middle mt-3 mt-md-3 mt-lg-4 text-light fs-1 fs-md-2" style="font-family: fantasy">
-              IDR <span id="count">10 </span>
-          </div>
-      </div>
     </div> --}}
     
     {{-- CARD berbagai Game --}}
@@ -101,8 +135,8 @@
           <div class="card rounded-4 border border-3 border-success" style="width: 18rem; background-color: rgb(66, 63, 63)">
             <img src="https://res.cloudinary.com/rey0303/image/upload/v1727615283/judibola.xyz_dpavqm.png" class="card-img-top" alt="...">
             <div class="card-body">
-              <h5 class="card-title text-light">Sport Bet</h5>
-              <a href="" class="btn btn-success">Play Now</a>
+              <h5 class="card-title text-light">Trading</h5>
+              <a href="" class="btn btn-success">Trade Now</a>
             </div>
           </div>
         </div>
@@ -110,8 +144,8 @@
           <div class="card rounded-4 border border-3 border-success" style="width: 18rem; background-color: rgb(66, 63, 63)">
             <img src="https://img.viva88athenae.com/pp/images/vs5triple8gold.png" class="card-img-top" alt="...">
             <div class="card-body">
-              <h5 class="card-title text-light">Slot</h5>
-              <a href="" class="btn btn-success">Play Now</a>
+              <h5 class="card-title text-light">Market</h5>
+              <a href="" class="btn btn-success">Trade Now</a>
             </div>
           </div>
         </div>
@@ -119,8 +153,8 @@
           <div class="card rounded-4 border border-3 border-success" style="width: 18rem; background-color: rgb(66, 63, 63)">
             <img src="https://img.viva88athenae.com/mg/images/smg_treasurestacks_icon_square_250x250_en.png" class="card-img-top" alt="...">
             <div class="card-body">
-              <h5 class="card-title text-light">Gambling</h5>
-              <a href="" class="btn btn-success">Play Now</a>
+              <h5 class="card-title text-light">Deposit</h5>
+              <a href="" class="btn btn-success">Depo Now</a>
             </div>
           </div>
         </div>
@@ -140,7 +174,9 @@
         </thead>
         <tbody>
           <tr>
-            <td class="align-middle">BTC</td>
+            <td class="align-middle">
+              <img src="https://indodax.com/v2/logo/svg/color/btc.svg" alt="">
+              BTC</td>
             <td class="align-middle">14.000</td>
             <td class="align-middle">13%</td>
             <td class="w-50">
@@ -156,7 +192,9 @@
             </td>
           </tr>
           <tr>
-            <td class="align-middle">BTC</td>
+            <td class="align-middle">
+              <img src="https://indodax.com/v2/logo/svg/color/xrp.svg" class="" alt="" width="32px">
+              XRP</td>
             <td class="align-middle">14.000</td>
             <td class="align-middle">13%</td>
             <td class="w-50">
@@ -172,14 +210,16 @@
             </td>
           </tr>
           <tr>
-            <td class="align-middle">BTC</td>
+            <td class="align-middle">
+              <img src="https://indodax.com/v2/logo/svg/color/eth.svg" alt="">
+              ETH</td>
             <td class="align-middle">14.000</td>
             <td class="align-middle">13%</td>
             <td class="w-50">
               <div id="my-chart" class="d-flex justify-content-center align-items-center">
                 <table class="charts-css area show-labels">
                   <tbody>
-                    <tr><td style="--start: 0.2; --end: 0.4;"><span class="data">$40K</span></td></tr>
+                    <tr><td style="--start: 0.2; --end: 0.4;"><span class="data">$20k</span></td></tr>
                     <tr><td style="--start: 0.4; --end: 0.6;"><span class="data">$42K</span></td></tr>
                     <tr><td style="--start: 0.6; --end: 0.5;"><span class="data">$41K</span></td></tr>
                   </tbody>
@@ -272,22 +312,9 @@
       </div>
     </div>
 
-    {{-- tampilan samping --}}
-    {{-- <aside class="d-flex flex-column">
-      <a href="{{ route('spinner') }}">
-        <img src="https://images.linkcdn.cloud/global/icon-footer/spinwheel.webp" alt="" class="btn" type="button" width="100">
-      </a>
-      <a href="{{ route('slot') }}">
-        <img src="https://media.tenor.com/TLTHTLrWmHIAAAAj/jos257-situsterpercaya.gif" alt="" class="btn" type="button" width="100">
-      </a>
-      <a href="{{ route('gambling') }}">
-        <img src="https://i.gifer.com/origin/12/1267b8d856837b9fce217963d72dd8a1_w200.gif" alt="" class="btn" type="button" width="100">
-      </a>
-    </aside> --}}
-
     @include('partials/footer')
 
-    <script>
+    {{-- <script>
         let count = 1000000; // Initialize the counter
     
         // Function to update the counter
@@ -298,10 +325,9 @@
     
         // Update the counter every second
         setInterval(updateCounter, 100);
-    </script>
+    </script> --}}
     
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
-      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>
