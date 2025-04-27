@@ -1,96 +1,85 @@
-<!--Main Navigation-->
-<style>
+<!-- Main Navigation -->
+<header class="fixed-top shadow">
+  <style>
       .btc-box {
-      border: 1px solid #ddd;
-      border-radius: 2rem;
-      padding: 0.25rem 0.75rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
+          border: 1px solid #3d3d3d;
+          border-radius: 50px;
+          padding: 0.4rem 1rem;
+          transition: all 0.3s ease;
+      }
+      .btc-box:hover {
+          background: #3d3d3d;
+          cursor: pointer;
+      }
+      .navbar-brand img {
+          transition: transform 0.3s ease;
+      }
+      .navbar-brand:hover img {
+          transform: scale(1.05);
+      }
+  </style>
 
-    .btc-icon {
-      background-color: orange;
-      color: white;
-      border-radius: 50%;
-      padding: 0.3rem;
-    }
-
-    .navbar-end {
-      margin-left: auto;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-</style>
-<header class="fixed-top">
-
-    <!-- Jumbotron -->
-    <div class="p-3 text-center" style="background-color: rgb(66, 63, 63)">
-      <div class="container">
-        <div class="row">
-
-          {{-- logo --}}
-          <div class="col-md-4 d-flex justify-content-center justify-content-md-start mb-3 mb-md-0">
-            <a class="ms-md-2">
-              <img src="{{ asset('images/logo dgn tulisan.png') }}" alt=""  height="50">
-            </a>
+  <!-- Top Bar -->
+  <div class="top-bar py-2" style="background: #1a1a1a">
+      <div class="container d-flex justify-content-between align-items-center">
+          <div class="text-white d-none d-md-block">
+              <i class="fas fa-wallet me-2"></i>Saldo: Rp 10.000
           </div>
-  
-          <!-- money elements -->
-          <div class="col-md-4 mt-2">
-            <p1 class="" style="color: white"> Rp 10.000</p1>
-            {{-- <h1 style="color:white;">Rp {{ number_format(Auth::user()->saldo, 10, ',', '.') }}</h1> --}}
-          </div>
-          <!-- search elements -->
-  
-          <!-- Right elements -->
-          <div class="col-md-4 d-flex justify-content-center justify-content-md-end align-items-center">
-            <div class="d-flex">
-              <button data-mdb-button-init data-mdb-ripple-init class="btn btn-outline-primary justify-content-end" data-mdb-ripple-color="dark" type="button">
-                {{-- Download app  {{Auth::user()->username}}<i class="fas fa-download ms-2"></i> --}}
+          
+          <div class="d-flex align-items-center gap-3">
+              <button class="btn btn-sm btn-outline-light">
+                  <i class="fas fa-download me-2"></i>Download App
               </button>
-            </div>
           </div>
-          <!-- Right elements -->
+      </div>
+  </div>
 
-        </div>
-      </div>
-    </div>
-    <!-- Jumbotron -->
-  
-    <div class="row border-bottom g-0">
-      <div class="col" style="background-color: #2c2c2c">
-        @include('partials/offcanvas')
-      </div>
-      <div class="col-11">
-        <!-- Navbar -->
-        <nav class="navbar text-light px-3" style="background-color: #2c2c2c">
-          <div class="container-fluid">
-            <div class="navbar-end">
-              <div class="btc-box">
-                <img src="https://indodax.com/v2/logo/svg/color/btc.svg" alt="">
-                <span>1 BTC = Rp 1.439.012.000</span>
+  <!-- Main Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark" style="background: #2c2c2c">
+      <div class="container">
+          <!-- Logo -->
+          <a class="navbar-brand" href="#">
+              <img src="{{ asset('images/logo dgn tulisan.png') }}" alt="Logo" height="40">
+          </a>
+
+          <!-- Bitcoin Price -->
+          <div class="d-flex align-items-center gap-3 ms-auto">
+              <div class="btc-box text-white d-flex align-items-center">
+                  <img src="https://indodax.com/v2/logo/svg/color/btc.svg" alt="BTC" style="height: 24px">
+                  <span class="ms-2">1 BTC = <span id="btc-price" class="fw-bold">Loading...</span></span>
               </div>
-                
+
+              <!-- User Dropdown -->
               <div class="dropdown">
-                <button class="btn btn-outline-primary dropdown-toggle" type="button" data-bs-toggle="dropdown">
-                  Menu
-                </button>
-                <ul class="dropdown-menu dropdown-menu-end">
-                  <li><a class="dropdown-item" href="#">Profil</a></li>
-                  <li><a class="dropdown-item" href="#">Pengaturan</a></li>
-                  <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item" href="#">Keluar</a></li>
-                </ul>
+                  <button class="btn btn-outline-light dropdown-toggle d-flex align-items-center" 
+                          type="button" 
+                          data-bs-toggle="dropdown"
+                          aria-expanded="false">
+                      <i class="fas fa-user-circle me-2"></i>
+                      Username
+                  </button>
+                  <ul class="dropdown-menu dropdown-menu-end">
+                      <li>
+                          <a class="dropdown-item" href="#">
+                              <i class="fas fa-user me-2"></i>Profil
+                          </a>
+                      </li>
+                      <li>
+                          <a class="dropdown-item" href="#">
+                              <i class="fas fa-cog me-2"></i>Pengaturan
+                          </a>
+                      </li>
+                      <li><hr class="dropdown-divider"></li>
+                      <li>
+                          <a class="dropdown-item text-danger" href="#">
+                              <i class="fas fa-sign-out-alt me-2"></i>Keluar
+                          </a>
+                      </li>
+                  </ul>
               </div>
-
-            </div>
           </div>
-        </nav>
-        <!-- Navbar -->
       </div>
-    </div>
+  </nav>
+</header>
 
-  </header>
-  <!--Main Navigation-->
+@vite(['resources/js/crypto.js'])

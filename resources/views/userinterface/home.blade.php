@@ -8,6 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/charts.css/dist/charts.min.css">
+    @vite(['resources/js/crypto.js'])
 
   <style>
     aside {
@@ -28,7 +29,7 @@
       font-weight: bold;
       position: relative;
       overflow: hidden;
-      height: 41px;
+      height: 44px;
       width: 300px;
       text-align: center;
     }
@@ -51,6 +52,37 @@
       100% { opacity: 0; transform: translateY(-100%); }
     }
 
+    .hover-scale {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        cursor: pointer;
+    }
+    .hover-scale:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 255, 0, 0.1);
+    }
+    .hover-grow {
+        transition: all 0.3s ease;
+    }
+    .hover-grow:hover {
+        transform: scale(1.05);
+        box-shadow: 0 5px 15px rgba(0, 255, 0, 0.3);
+    }
+    .bg-dark-transparent {
+        background: rgba(44, 44, 44, 0.9);
+        backdrop-filter: blur(10px);
+    }
+    .img-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        transition: all 0.3s ease;
+    }
+    .card:hover .img-overlay {
+        opacity: 0;
+    }
+
   </style>
 </head>
 <body class="" style="background-color: #1e1e1e; padding-top: 130px">
@@ -71,167 +103,172 @@
         Investasi Trading 
         untuk
         <span class="word-slide text-light d-inline-block">
-          <div class="word">Pensiunan</div>
-          <div class="word">Mahasiswa</div>
-          <div class="word">Pekerja</div>
-          <div class="word">Pengangguran</div>
+          <div class="word" style="color: rgb(61, 227, 61)">Pensiunan</div>
+          <div class="word" style="color: rgb(61, 227, 61)">Mahasiswa</div>
+          <div class="word" style="color: rgb(61, 227, 61)">Karyawan</div>
+          <div class="word" style="color: rgb(61, 227, 61)">PNS</div>
         </span>
       </h2>
   
-      <div class="d-flex justify-content-center flex-wrap gap-4 mt-4">
-        <div class="text-center">
-          <strong>Sejak 2014</strong>
-          Pertama di Indonesia
-        </div>
-        <div class="text-center">
-          <strong>400+ Koin</strong>
-          Aset Kripto Terdaftar
-        </div>
-        <div class="text-center">
-          <strong>7.5 Juta</strong>
-          Member Terdaftar
+      <div class="container mt-4 p-2" style="">
+        <div class="d-flex justify-content-center flex-wrap gap-4 m-4">
+          <div class="text-center">
+            <strong>Sejak 2025</strong>
+            Pertama di Indonesia
+          </div>
+          <div class="text-center">
+            <strong>400+ Koin</strong>
+            Aset Kripto Terdaftar
+          </div>
+          <div class="text-center">
+            <strong>7.5 Juta</strong>
+            Member Terdaftar
+          </div>
         </div>
       </div>
+
     </div>
 
     {{-- CAROUSEL --}}
-    {{-- <div id="CarouselSlot" class="carousel slide mt-3" data-bs-ride="carousel">
-        <div class="carousel-indicators">
+    <div class="container border rounded-4 border-3 mt-4 border-success p-3 text-light">
+      <h1 class="mb-2">Informasi Terkini</h1>
+
+      <div class="container d-flex justify-content-center mt-3">
+        <div id="CarouselSlot" class="carousel slide" data-bs-ride="carousel" style="max-width: 520px;">
+          <div class="carousel-indicators">
             <button type="button" data-bs-target="#CarouselSlot" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
             <button type="button" data-bs-target="#CarouselSlot" data-bs-slide-to="1" aria-label="Slide 2"></button>
             <button type="button" data-bs-target="#CarouselSlot" data-bs-slide-to="2" aria-label="Slide 3"></button>
             <button type="button" data-bs-target="#CarouselSlot" data-bs-slide-to="3" aria-label="Slide 4"></button>
-        </div>
-
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img src="https://blog.indodax.com/wp-content/uploads/2025/04/Cuan-Sesimple-Itu_April-2025_Blog-1200x520-2.png" class="d-block " width="500px" alt="...">
           </div>
-          <div class="carousel-item">
-            <img src="https://blog.indodax.com/wp-content/uploads/2025/04/Cuan-Sesimple-Itu_April-2025_Blog-1200x520-2.png" class="d-block " width="500px" alt="...">
-          </div>
-          <div class="carousel-item">
-            <img src="https://blog.indodax.com/wp-content/uploads/2025/04/Cuan-Sesimple-Itu_April-2025_Blog-1200x520-2.png" class="d-block " width="500px" alt="...">
-          </div>
-          <div class="carousel-item">
-            <img src="https://blog.indodax.com/wp-content/uploads/2025/04/Cuan-Sesimple-Itu_April-2025_Blog-1200x520-2.png" class="d-block" width="500px" alt="...">
-          </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#CarouselSlot" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#CarouselSlot" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
-    </div> --}}
-    
-    {{-- CARD berbagai Game --}}
-    <div class="container mt-5 p-3 rounded-4 border border-3 border-success" style="background-color: #2c2c2c">
-      <h1 class="text-center mb-3 text-light">Games</h1>
-      <div class="row justify-content-center">
-        <div class="col-auto mb-4">
-          <div class="card rounded-4 border border-3 border-success" style="width: 18rem; background-color: rgb(66, 63, 63)">
-            <img src="https://res.cloudinary.com/rey0303/image/upload/v1727615283/judibola.xyz_dpavqm.png" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title text-light">Trading</h5>
-              <a href="" class="btn btn-success">Trade Now</a>
+      
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="https://blog.indodax.com/wp-content/uploads/2025/04/Cuan-Sesimple-Itu_April-2025_Blog-1200x520-2.png" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src="https://blog.indodax.com/wp-content/uploads/2025/04/Cuan-Sesimple-Itu_April-2025_Blog-1200x520-2.png" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src="https://blog.indodax.com/wp-content/uploads/2025/04/Cuan-Sesimple-Itu_April-2025_Blog-1200x520-2.png" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src="https://blog.indodax.com/wp-content/uploads/2025/04/Cuan-Sesimple-Itu_April-2025_Blog-1200x520-2.png" class="d-block w-100" alt="...">
             </div>
           </div>
-        </div>
-        <div class="col-auto mb-4">
-          <div class="card rounded-4 border border-3 border-success" style="width: 18rem; background-color: rgb(66, 63, 63)">
-            <img src="https://img.viva88athenae.com/pp/images/vs5triple8gold.png" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title text-light">Market</h5>
-              <a href="" class="btn btn-success">Trade Now</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-auto mb-4">
-          <div class="card rounded-4 border border-3 border-success" style="width: 18rem; background-color: rgb(66, 63, 63)">
-            <img src="https://img.viva88athenae.com/mg/images/smg_treasurestacks_icon_square_250x250_en.png" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title text-light">Deposit</h5>
-              <a href="" class="btn btn-success">Depo Now</a>
-            </div>
-          </div>
+      
+          <button class="carousel-control-prev" type="button" data-bs-target="#CarouselSlot" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#CarouselSlot" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
         </div>
       </div>
     </div>
+    
+    
+{{-- Game Cards Section --}}
+<div class="container my-5">
+  <div class="text-center mb-5">
+      <h1 class="display-5 fw-bold text-success mb-3">Featured Services</h1>
+      <p class="text-light">Start your financial journey with our premium services</p>
+  </div>
+
+  <div class="row g-4 justify-content-center">
+      <!-- Trading Card -->
+      <div class="col-lg-4 col-md-6">
+          <div class="card h-100 border-3 border-success bg-dark-transparent hover-scale shadow-lg">
+              <div class="card-img-top position-relative overflow-hidden">
+                  <img src="https://res.cloudinary.com/rey0303/image/upload/v1727615283/judibola.xyz_dpavqm.png" 
+                       class="img-fluid w-100" 
+                       style="height: 250px; object-fit: cover"
+                       alt="Trading">
+                  <div class="img-overlay bg-dark bg-opacity-50"></div>
+              </div>
+              <div class="card-body text-center py-4">
+                  <div class="icon-box mb-3">
+                      <i class="fas fa-chart-line fa-3x text-success"></i>
+                  </div>
+                  <h3 class="card-title text-light mb-3">Smart Trading</h3>
+                  <p class="text-secondary mb-4">Trade with confidence using our advanced tools</p>
+                  <a href="trading" class="btn btn-success px-5 py-2 rounded-pill hover-grow">
+                      Start Trading <i class="fas fa-arrow-right ms-2"></i>
+                  </a>
+              </div>
+          </div>
+      </div>
+
+      <!-- Market Card -->
+      <div class="col-lg-4 col-md-6">
+          <div class="card h-100 border-3 border-success bg-dark-transparent hover-scale shadow-lg">
+              <div class="card-img-top position-relative overflow-hidden">
+                  <img src="https://img.viva88athenae.com/pp/images/vs5triple8gold.png" 
+                       class="img-fluid w-100" 
+                       style="height: 250px; object-fit: cover"
+                       alt="Market">
+                  <div class="img-overlay bg-dark bg-opacity-50"></div>
+              </div>
+              <div class="card-body text-center py-4">
+                  <div class="icon-box mb-3">
+                      <i class="fas fa-coins fa-3x text-warning"></i>
+                  </div>
+                  <h3 class="card-title text-light mb-3">Live Market</h3>
+                  <p class="text-secondary mb-4">Real-time market data and analysis</p>
+                  <a href="market" class="btn btn-warning px-5 py-2 rounded-pill hover-grow">
+                      View Markets <i class="fas fa-chart-bar ms-2"></i>
+                  </a>
+              </div>
+          </div>
+      </div>
+
+      <!-- Deposit Card -->
+      <div class="col-lg-4 col-md-6">
+          <div class="card h-100 border-3 border-success bg-dark-transparent hover-scale shadow-lg">
+              <div class="card-img-top position-relative overflow-hidden">
+                  <img src="https://img.viva88athenae.com/mg/images/smg_treasurestacks_icon_square_250x250_en.png" 
+                       class="img-fluid w-100" 
+                       style="height: 250px; object-fit: cover"
+                       alt="Deposit">
+                  <div class="img-overlay bg-dark bg-opacity-50"></div>
+              </div>
+              <div class="card-body text-center py-4">
+                  <div class="icon-box mb-3">
+                      <i class="fas fa-wallet fa-3x text-info"></i>
+                  </div>
+                  <h3 class="card-title text-light mb-3">Instant Deposit</h3>
+                  <p class="text-secondary mb-4">Fast and secure transaction processing</p>
+                  <a href="donasi" class="btn btn-info px-5 py-2 rounded-pill hover-grow">
+                      Deposit Now <i class="fas fa-credit-card ms-2"></i>
+                  </a>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
 
     {{-- tabel koin --}}
-    <div class="container p-4 mt-4 border border-solid">
-      <table class="table table-dark table-hover text-center">
-        <thead>
-          <tr>
-            <th scope="col ">Nama Koin</th>
-            <th scope="col">Harga Terakhir</th>
-            <th scope="col">presentase</th>
-            <th scope="col">Grafik</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="align-middle">
-              <img src="https://indodax.com/v2/logo/svg/color/btc.svg" alt="">
-              BTC</td>
-            <td class="align-middle">14.000</td>
-            <td class="align-middle">13%</td>
-            <td class="w-50">
-              <div id="my-chart" class="d-flex justify-content-center align-items-center">
-                <table class="charts-css area show-labels">
-                  <tbody>
-                    <tr><td style="--start: 0.2; --end: 0.4;"><span class="data">$40K</span></td></tr>
-                    <tr><td style="--start: 0.4; --end: 0.6;"><span class="data">$42K</span></td></tr>
-                    <tr><td style="--start: 0.6; --end: 0.5;"><span class="data">$41K</span></td></tr>
-                  </tbody>
-                </table>
-              </div>              
-            </td>
-          </tr>
-          <tr>
-            <td class="align-middle">
-              <img src="https://indodax.com/v2/logo/svg/color/xrp.svg" class="" alt="" width="32px">
-              XRP</td>
-            <td class="align-middle">14.000</td>
-            <td class="align-middle">13%</td>
-            <td class="w-50">
-              <div id="my-chart" class="d-flex justify-content-center align-items-center">
-                <table class="charts-css area show-labels">
-                  <tbody>
-                    <tr><td style="--start: 0.2; --end: 0.4;"><span class="data">$40K</span></td></tr>
-                    <tr><td style="--start: 0.4; --end: 0.6;"><span class="data">$42K</span></td></tr>
-                    <tr><td style="--start: 0.6; --end: 0.5;"><span class="data">$41K</span></td></tr>
-                  </tbody>
-                </table>
-              </div>              
-            </td>
-          </tr>
-          <tr>
-            <td class="align-middle">
-              <img src="https://indodax.com/v2/logo/svg/color/eth.svg" alt="">
-              ETH</td>
-            <td class="align-middle">14.000</td>
-            <td class="align-middle">13%</td>
-            <td class="w-50">
-              <div id="my-chart" class="d-flex justify-content-center align-items-center">
-                <table class="charts-css area show-labels">
-                  <tbody>
-                    <tr><td style="--start: 0.2; --end: 0.4;"><span class="data">$20k</span></td></tr>
-                    <tr><td style="--start: 0.4; --end: 0.6;"><span class="data">$42K</span></td></tr>
-                    <tr><td style="--start: 0.6; --end: 0.5;"><span class="data">$41K</span></td></tr>
-                  </tbody>
-                </table>
-              </div>              
-            </td>
-          </tr>
-        </tbody>
-      </table>
+    <div class="container my-5">
+      <h1 class="text-center text-light mb-4">Harga Crypto Real-time</h1>
+      <div class="table-responsive">
+          <table class="table table-striped table-hover text-center align-middle">
+              <thead class="table-dark">
+                  <tr>
+                      <th scope="col">Nama Coin</th>
+                      <th scope="col">Harga (idr)</th>
+                      <th scope="col">Perubahan 24h (%)</th>
+                  </tr>
+              </thead>
+              <tbody id="crypto-table-body">
+                  {{-- tabel dari js akan muncul disini --}}
+              </tbody>
+          </table>
+      </div>
     </div>
-
-
+    
     {{-- pembayaran --}}
     <div class="container mt-5 p-3 rounded-4 border border-3 border-success" style="background-color: #2c2c2c">
       <div class="row g-2 text-light">
@@ -312,20 +349,15 @@
       </div>
     </div>
 
-    @include('partials/footer')
+    {{-- <div>
+      <h1>Harga Bitcoin Saat Ini</h1>
+      <p id="btc-price">Loading...</p>
+    </div>
+    
+    @vite(['resources/js/crypto.js']) --}}
+  
 
-    {{-- <script>
-        let count = 1000000; // Initialize the counter
-    
-        // Function to update the counter
-        function updateCounter() {
-            count++;     // Increment the counter
-            document.getElementById('count').innerText = count.toLocaleString('id-ID'); // Format ke mata uang
-        }
-    
-        // Update the counter every second
-        setInterval(updateCounter, 100);
-    </script> --}}
+    @include('partials/footer')
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
