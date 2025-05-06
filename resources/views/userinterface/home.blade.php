@@ -269,82 +269,121 @@
       </div>
     </div>
     
-    {{-- pembayaran --}}
-    <div class="container mt-5 p-3 rounded-4 border border-3 border-success" style="background-color: #2c2c2c">
-      <div class="row g-2 text-light">
-        <div class="border-bottom border-3">
-          <h1>Sistem Pembayaran</h1>
+{{-- pembayaran --}}
+<div class="container mt-5 p-4 rounded-4 border border-3 border-success mb-4 bg-dark-transparent">
+  <div class="text-center mb-5">
+      <h1 class="display-5 fw-bold text-success mb-3">Mitra Pembayaran</h1>
+      <p class="text-light">Transaksi aman dan terjamin melalui institusi keuangan terpercaya</p>
+  </div>
+
+  <!-- Virtual Account Banks -->
+  <div class="row g-4 justify-content-center mb-5">
+      <h3 class="text-light text-center mb-4"><i class="bi bi-bank me-2"></i>Virtual Account</h3>
+      <div class="col-auto text-center">
+          <div class="d-flex flex-column align-items-center hover-grow">
+              <img src="https://www.permata.co.id/theme/img/logo2020.png" 
+                   alt="Permata VA" 
+                   class="img-fluid mb-2"
+                   style="height: 40px">
+              <span class="text-success">Permata VA</span>
+          </div>
+      </div>
+      <div class="col-auto text-center">
+          <div class="d-flex flex-column align-items-center hover-grow">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/5/55/BNI_logo.svg" 
+                   alt="BNI VA" 
+                   class="img-fluid mb-2"
+                   style="height: 40px">
+              <span class="text-success">BNI VA</span>
+          </div>
+      </div>
+      <div class="col-auto text-center">
+          <div class="d-flex flex-column align-items-center hover-grow">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/7/7f/BRI_2020.svg" 
+                   alt="BRI VA" 
+                   class="img-fluid mb-2"
+                   style="height: 40px">
+              <span class="text-success">BRI VA</span>
+          </div>
+      </div>
+      <div class="col-auto text-center">
+          <div class="d-flex flex-column align-items-center hover-grow">
+              <img src="https://www.bankmandiri.co.id/assets/images/logo/logo-mandiri-dark.svg" 
+                   alt="Mandiri VA" 
+                   class="img-fluid mb-2"
+                   style="height: 40px">
+              <span class="text-success">Mandiri VA</span>
+          </div>
+      </div>
+      <div class="col-auto text-center">
+          <div class="d-flex flex-column align-items-center hover-grow">
+              <img src="https://images.linkcdn.cloud/global/payment/V2/IDR/bank/bca.webp" 
+                   alt="BCA VA" 
+                   class="img-fluid mb-2"
+                   style="height: 40px">
+              <span class="text-success">BCA VA</span>
+          </div>
+      </div>
+  </div>
+
+  <!-- E-Wallets -->
+  <div class="row g-4 justify-content-center">
+      <h3 class="text-light text-center mb-4"><i class="bi bi-wallet2 me-2"></i>Dompet Digital</h3>
+      <div class="col-auto text-center">
+          <div class="d-flex flex-column align-items-center hover-grow">
+              <img src="https://images.linkcdn.cloud/global/payment/V2/IDR/epayment/gopay_color.webp" 
+                   alt="Gopay" 
+                   class="img-fluid mb-2"
+                   style="height: 40px">
+              <span class="text-success">Gopay</span>
+          </div>
+      </div>
+      <div class="col-auto text-center">
+          <div class="d-flex flex-column align-items-center hover-grow">
+              <img src="https://images.linkcdn.cloud/global/payment/V2/IDR/bank/shopeepay.webp" 
+                   alt="Shopee Pay" 
+                   class="img-fluid mb-2"
+                   style="height: 40px">
+              <span class="text-success">Shopee Pay</span>
+          </div>
+      </div>
+      <div class="col-auto text-center">
+          <div class="d-flex flex-column align-items-center hover-grow">
+              <img src="https://images.linkcdn.cloud/global/payment/V2/IDR/epayment/dana.webp" 
+                   alt="Dana" 
+                   class="img-fluid mb-2"
+                   style="height: 40px">
+              <span class="text-success">Dana</span>
+          </div>
+      </div>
+      <div class="col-auto text-center">
+          <div class="d-flex flex-column align-items-center hover-grow">
+              <img src="https://images.linkcdn.cloud/global/payment/V2/IDR/epayment/ovo.webp" 
+                   alt="OVO" 
+                   class="img-fluid mb-2"
+                   style="height: 40px">
+              <span class="text-success">OVO</span>
+          </div>
+      </div>
+  </div>
+</div>
+
+    <div class=" text-white text-center mt-5 p-2" style="background-color: grey">
+      <div class="row m-3">
+        <p1 class="fs-4">Urban Trade berizin dan diawasi oleh Otoritas Jasa Keuangan (OJK) serta terdaftar dan tersertifikasi oleh:</p1>
+      </div>
+      <div class="row">
+        <div class="col">
+          <img src="https://indodax.com/v3-exchange/svg/logo/CFX.svg" alt="">
         </div>
-          <div class="col-md-2">
-              <div class="card text-center btn btn-dark" type="button">
-                  <div class="image">
-                      <img src="https://images.linkcdn.cloud/global/payment/V2/IDR/epayment/gopay_color.webp" height="50" width="70">
-                  </div>
-              </div>
-              <div class="container">
-                <h5 class="text-center">Gopay</h5>
-              </div>
-          </div>
-          <div class="col-md-2">
-            <div class="card text-center btn btn-dark" type="button">
-                <div class="image">
-                    <img src="https://images.linkcdn.cloud/global/payment/V2/IDR/bank/shopeepay.webp" height="50" width="70">
-                </div>
-            </div>
-            <div class="container">
-              <h5 class="text-center">Shopee Pay</h5>
-            </div>
+        <div class="col">
+          <img src="https://indodax.com/v3-exchange/svg/logo/logo-kki.svg" alt="">
         </div>
-        <div class="col-md-2">
-          <div class="card text-center btn btn-dark" type="button">
-              <div class="image">
-                  <img src="https://images.linkcdn.cloud/global/payment/V2/IDR/epayment/dana.webp" height="50" width="70">
-              </div>
-          </div>
-          <div class="container">
-            <h5 class="text-center">Dana</h5>
-          </div>
+        <div class="col">
+          <img src="https://indodax.com/v3-exchange/svg/logo/KEMKOMDIGI-new.svg" alt="">
         </div>
-        <div class="col-md-2">
-          <div class="card text-center btn btn-dark" type="button">
-              <div class="image">
-                  <img src="https://images.linkcdn.cloud/global/payment/V2/IDR/epayment/qris.webp" height="50" width="70">
-              </div>
-          </div>
-          <div class="container">
-            <h5 class="text-center">Qris</h5>
-          </div>
-        </div>
-        <div class="col-md-2">
-          <div class="card text-center btn btn-dark" type="button">
-              <div class="image">
-                  <img src="https://images.linkcdn.cloud/global/payment/V2/IDR/epayment/ovo.webp" height="50" width="70">
-              </div>
-          </div>
-          <div class="container">
-            <h5 class="text-center">OVO</h5>
-          </div>
-        </div>
-        <div class="col-md-2">
-          <div class="card text-center btn btn-dark" type="button">
-              <div class="image">
-                  <img src="https://appmanager.seabank.co.id/seamoney/bke/app-manager/live/front_low_code/20230921/ea2515cefe5c4b4cb9e0776003124e0f.png" height="50" width="70">
-              </div>
-          </div>
-          <div class="container">
-            <h5 class="text-center">Sea Bank</h5>
-          </div>
-        </div>
-          
-        <div class="col-md-2">
-          <div class="card text-center btn btn-dark" type="button">
-              <div class="image">
-                  <img src="https://images.linkcdn.cloud/global/payment/V2/IDR/bank/bca.webp" height="50" width="70">
-              </div>
-          </div>
-          <div class="container">
-            <h5 class="text-center">Bank Bca</h5>
-          </div>
+        <div class="col">
+          <img src="https://indodax.com/v3-exchange/img/home/CBQA-ISO-27001.png" alt="" style="width: 100px; height: 100px">
         </div>
       </div>
     </div>

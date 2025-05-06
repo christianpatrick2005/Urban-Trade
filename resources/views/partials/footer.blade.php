@@ -1,6 +1,6 @@
       <!-- Footer -->
       <footer
-              class="text-center text-lg-start text-white mt-5"
+              class="text-center text-lg-start text-white"
               style="background-color: rgb(66, 63, 63)"
               >
         <!-- Grid container -->
@@ -17,15 +17,15 @@
         
               <!-- Grid column -->
               <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
-                <h6 class="text-uppercase mb-4 font-weight-bold">Games</h6>
+                <h6 class="text-uppercase mb-4 font-weight-bold">Menus</h6>
                 <p>
-                  <a class="text-white" href="">Sports Bet</a>
+                  <a class="text-white" href="">Trading</a>
                 </p>
                 <p>
-                  <a class="text-white" href="">Slot</a>
+                  <a class="text-white" href="">Market</a>
                 </p>
                 <p>
-                  <a class="text-white" href="">Gambling</a>
+                  <a class="text-white" href="">Deposit</a>
                 </p>
                 <p class="text-white">
                   Coming Soon
@@ -111,8 +111,8 @@
         <!-- Copyright -->
         <div class="text-center p-3" style="background-color: #2c2c2c">
 
-          &copy; 2024 - <span id="year"></span> Urban Slot  Copyright
-          <a class="text-white" href="https://UrbanSlot.com/">UrbanSlot.com</a>. All Rights Reserved.
+          &copy; 2024 - <span id="year"></span> Urban Trade  Copyright
+          <a class="text-white" href="https://UrbanSlot.com/">UrbanTrade.com</a>. All Rights Reserved.
         </div>
         <!-- Copyright -->
       </footer>
