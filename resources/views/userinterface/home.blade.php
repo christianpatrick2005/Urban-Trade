@@ -281,7 +281,7 @@
       <h3 class="text-light text-center mb-4"><i class="bi bi-bank me-2"></i>Virtual Account</h3>
       <div class="col-auto text-center">
           <div class="d-flex flex-column align-items-center hover-grow">
-              <img src="https://www.permata.co.id/theme/img/logo2020.png" 
+              <img src="https://logowik.com/content/uploads/images/permata-bank-new-20245093.logowik.com.webp" 
                    alt="Permata VA" 
                    class="img-fluid mb-2"
                    style="height: 40px">
@@ -290,7 +290,7 @@
       </div>
       <div class="col-auto text-center">
           <div class="d-flex flex-column align-items-center hover-grow">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/5/55/BNI_logo.svg" 
+              <img src="https://logowik.com/content/uploads/images/bni-bank-negara-indonesia8078.logowik.com.webp" 
                    alt="BNI VA" 
                    class="img-fluid mb-2"
                    style="height: 40px">
@@ -299,7 +299,7 @@
       </div>
       <div class="col-auto text-center">
           <div class="d-flex flex-column align-items-center hover-grow">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/7/7f/BRI_2020.svg" 
+              <img src="https://buatlogoonline.com/wp-content/uploads/2022/10/Logo-Bank-BRI.png" 
                    alt="BRI VA" 
                    class="img-fluid mb-2"
                    style="height: 40px">
@@ -308,7 +308,7 @@
       </div>
       <div class="col-auto text-center">
           <div class="d-flex flex-column align-items-center hover-grow">
-              <img src="https://www.bankmandiri.co.id/assets/images/logo/logo-mandiri-dark.svg" 
+              <img src="https://www.cdnlogo.com/logos/b/21/bank-mandiri.svg" 
                    alt="Mandiri VA" 
                    class="img-fluid mb-2"
                    style="height: 40px">

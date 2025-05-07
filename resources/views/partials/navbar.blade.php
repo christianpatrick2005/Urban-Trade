@@ -56,17 +56,18 @@
                           data-bs-toggle="dropdown"
                           aria-expanded="false">
                       <i class="fas fa-user-circle me-2"></i>
+                      <img src="" class="img-fluid" alt="">
                       Username
                   </button>
                   <ul class="dropdown-menu dropdown-menu-end">
                       <li>
-                          <a class="dropdown-item" href="#">
-                              <i class="fas fa-user me-2"></i>Profil
+                          <a class="dropdown-item" href="profile">
+                              <i class="fas fa-user me-2"></i>Profile
                           </a>
                       </li>
                       <li>
-                          <a class="dropdown-item" href="#">
-                              <i class="fas fa-cog me-2"></i>Pengaturan
+                          <a class="dropdown-item" href="editprofile">
+                              <i class="fas fa-cog me-2"></i>Edit Profile
                           </a>
                       </li>
                       <li><hr class="dropdown-divider"></li>

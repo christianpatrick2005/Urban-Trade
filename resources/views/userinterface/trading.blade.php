@@ -1,164 +1,267 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Binomo-style Layout</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/charts.css/dist/charts.min.css">
-  <style>
-    body {
-      background-color: #1e1e1e;
-      color: white;
-    }
-    .sidebar {
-      background-color: #2c2c2c;
-      height: 100vh;
-    }
-    .menu-icon {
-      margin: 1rem 0;
-      text-align: center;
-      font-size: 1.5rem;
-    }
-    .header {
-      background-color: #2c2c2c;
-      padding: 1rem;
-    }
-    .main-content {
-      padding: 1rem;
-    }
-    .price-box {
-      background-color: #333;
-      padding: 0.5rem 1rem;
-      border-radius: 8px;
-      display: inline-block;
-      font-weight: bold;
-    }
-    .info-box {
-      background-color: #333;
-      padding: 1rem;
-      border-radius: 8px;
-      margin-bottom: 1rem;
-    }
-    .chart-container {
-        width: 600px;
-        height: 500px;
-        margin: auto;
-    }
-
-    table {
-        width: 100%;
-        height: 100%;
-    }
-
-    .up {
-        background-color: green;
-    }
-
-    .down {
-        background-color: red;
-    }
-
-    #controls {
-        text-align: center;
-        margin-top: 20px;
-    }
-
-    button {
-        padding: 10px;
-        font-size: 16px;
-        margin: 5px;
-        cursor: pointer;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <title>Trading Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/charts.css/dist/charts.min.css">
+    <style>
+        :root {
+            --primary-bg: #1a1a1a;
+            --secondary-bg: #2d2d2d;
+            --accent-green: #00c176;
+            --accent-red: #ff4d4f;
+            --accent-yellow: #ffd700;
+        }
+        
+        body {
+            background-color: var(--primary-bg);
+            color: white;
+            min-height: 100vh;
+            margin-top: 100px
+        }
+        
+        .sidebar {
+            background-color: var(--secondary-bg);
+            padding: 1rem 0;
+            border-right: 1px solid #3d3d3d;
+        }
+        
+        .menu-icon {
+            padding: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 8px;
+            margin: 0.5rem 0;
+        }
+        
+        .menu-icon:hover {
+            background-color: #3d3d3d;
+            transform: scale(1.1);
+        }
+        
+        .header {
+            background-color: var(--secondary-bg);
+            padding: 1rem 2rem;
+            border-bottom: 1px solid #3d3d3d;
+        }
+        
+        .chart-container {
+            background: var(--secondary-bg);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .info-card {
+            background: var(--secondary-bg);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid #3d3d3d;
+        }
+        
+        .price-tag {
+            background: linear-gradient(45deg, #2d2d2d, #3d3d3d);
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        
+        .btn-trade {
+            padding: 1.2rem;
+            font-size: 1.1rem;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            border: none;
+        }
+        
+        .btn-trade:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        
+        #line-chart {
+            --color: rgba(255,255,255,0.2);
+            --axes-width: 1px;
+            --grid-gap: 15px;
+        }
+        
+        .progress-bar {
+            height: 6px;
+            border-radius: 3px;
+            overflow: hidden;
+            background: #3d3d3d;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            transition: width 0.5s ease;
+        }
+    </style>
 </head>
-<body>
-<div class="container-fluid">
-  <div class="row">
-    <!-- Sidebar -->
-    <div class="col-1 sidebar d-flex flex-column align-items-center">
-      <div class="menu-icon">⏱️</div>
-      <div class="menu-icon">📊</div>
-      <div class="menu-icon">🏆</div>
-      <div class="menu-icon">📅</div>
-      <div class="menu-icon">🎁</div>
-      <div class="menu-icon">⚙️</div>
+<body class="">
+    @include('partials/navbar')
+    
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-1 sidebar">
+                <div class="d-flex flex-column align-items-center">
+                    <div class="menu-icon">⏱️</div>
+                    <div class="menu-icon">📊</div>
+                    <div class="menu-icon">🏆</div>
+                    <div class="menu-icon">📅</div>
+                    <div class="menu-icon">🎁</div>
+                    <div class="menu-icon">⚙️</div>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="col-11 p-4">
+                <!-- Header -->
+                <div class="header d-flex justify-content-between align-items-center mb-4">
+                    <div class="d-flex align-items-center gap-3">
+                        <h4 class="mb-0 fw-bold">CRYPTO IDX</h4>
+                        <span class="badge bg-success">83% Profit</span>
+                    </div>
+                    <div class="d-flex align-items-center gap-3">
+                        <div class="d-flex align-items-center gap-2">
+                            <span class="text-muted">Saldo:</span>
+                            <span class="price-tag">Rp14.000.000</span>
+                        </div>
+                        <button class="btn btn-warning d-flex align-items-center gap-2">
+                            <span>💰</span>
+                            <span>Deposit</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Trading Section -->
+                <div class="row g-4">
+                    <!-- Chart Area -->
+                    <div class="col-lg-8">
+                        <div class="chart-container">
+                            <div class="d-flex justify-content-between align-items-center mb-4">
+                                <h5 class="mb-0">BTC/IDR • 1 Minute</h5>
+                                <div class="price-tag">641.8684</div>
+                            </div>
+                            
+                            <div class="position-relative">
+                                <div id="my-chart" class="chart-container">
+                                    <table id="line-chart" class="charts-css line show-data-on-hover show-data-axes">
+                                        <tbody id="chart-data">
+                                            <tr><td class="up" style="--start: 0.3; --end: 0.6;"></td></tr>
+                                            <tr><td class="down" style="--start: 0.6; --end: 0.2;"></td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
+                                <div class="position-absolute top-0 end-0 mt-3 me-3 d-flex gap-2">
+                                    <div class="badge bg-success">+59% Naik</div>
+                                    <div class="badge bg-danger">+41% Turun</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Trading Panel -->
+                    <div class="col-lg-4">
+                        <div class="info-card">
+                            <div class="mb-4">
+                                <h5 class="mb-3">Order Details</h5>
+                                <div class="d-flex flex-column gap-3">
+                                    <div class="d-flex justify-content-between">
+                                        <span class="text-muted">Jumlah:</span>
+                                        <span class="fw-bold">Rp14.000</span>
+                                    </div>
+                                    <div class="d-flex justify-content-between">
+                                        <span class="text-muted">Waktu:</span>
+                                        <span class="fw-bold">20:05</span>
+                                    </div>
+                                    <div class="d-flex justify-content-between">
+                                        <span class="text-muted">Pendapatan:</span>
+                                        <span class="text-success fw-bold">+83%</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mb-4">
+                                <div class="progress-bar">
+                                    <div class="progress-fill bg-success" style="width: 59%"></div>
+                                </div>
+                                <div class="d-flex justify-content-between mt-2">
+                                    <small class="text-success">59% Naik</small>
+                                    <small class="text-danger">41% Turun</small>
+                                </div>
+                            </div>
+
+                            <div class="d-grid gap-3">
+                                <button class="btn-trade bg-success" onclick="addPoint(true)">
+                                    ⬆️ Naik (+83%)
+                                </button>
+                                <button class="btn-trade bg-danger" onclick="addPoint(false)">
+                                    ⬇️ Turun (-100%)
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="info-card">
+                            <h5 class="mb-3">Market Info</h5>
+                            <div class="d-flex flex-column gap-3">
+                                <div class="d-flex justify-content-between">
+                                    <span class="text-muted">Volume 24h:</span>
+                                    <span>Rp 2.4T</span>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <span class="text-muted">Perubahan 24h:</span>
+                                    <span class="text-success">+3.2%</span>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <span class="text-muted">Likuiditas:</span>
+                                    <span class="text-warning">Tinggi</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <!-- Main Area -->
-    <div class="col-11">
-      <!-- Header -->
-      <div class="header d-flex justify-content-between align-items-center">
-        <div><strong>binomo</strong> | Crypto IDX 83%</div>
-        <div>Akun demo: <strong>Rp14.000.000,00</strong> <button class="btn btn-warning btn-sm">Deposit</button></div>
-      </div>
+    @include('partials/footer')
 
-      <!-- Main Content -->
-      <div class="main-content row">
-        <!-- Left Info Panel -->
-        <div class="col-md-8">
-          <div class="info-box d-flex justify-content-between">
-            <div>Total Investasi: Rp0,00</div>
-            <div>Pendapatan Diharapkan: Rp0,00</div>
-            <div>Waktu Tersisa: 00:06</div>
-          </div>
-          <div class="mt-4">
-            <div class="price-box">Harga Saat Ini: 641.8684</div>
-          </div>
-          <p class="mt-3">📍Waktu yang tersisa: <strong>6 detik</strong></p>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function addPoint(isUp) {
+            const chartData = document.getElementById("chart-data");
+            const lastRow = chartData.lastElementChild;
+            const lastEnd = lastRow ? parseFloat(lastRow.firstElementChild.style.getPropertyValue("--end")) : 0.5;
 
-          <div class="d-flex justify-content-center mt-4">
-            <div class="chart-container">
-                <table id="line-chart" class="charts-css line show-data-on-hover">
-                    <tbody id="chart-data">
-                        <tr><td class="up" style="--start: 0.3; --end: 0.6;"></td></tr>
-                        <tr><td class="down" style="--start: 0.6; --end: 0.2;"></td></tr>
-                    </tbody>
-                </table>
-            </div>
-          </div>
-          
-        </div>
+            let newEnd = isUp ? 
+                Math.min(lastEnd + (Math.random() * 0.4), 1.0) : 
+                Math.max(lastEnd - (Math.random() * 0.4), 0.1);
 
+            const newRow = document.createElement("tr");
+            const newCell = document.createElement("td");
+            newCell.classList.add(isUp ? "up" : "down");
+            newCell.style.setProperty("--start", lastEnd);
+            newCell.style.setProperty("--end", newEnd);
+            
+            // Add animation
+            newCell.style.opacity = "0";
+            setTimeout(() => {
+                newCell.style.opacity = "1";
+                newCell.style.transition = "opacity 0.3s ease";
+            }, 10);
 
-        <!-- Right Panel -->
-        <div class="col-md-4">
-          <div class="info-box">
-            <div class="mb-2">Jumlah: <strong>Rp14.000</strong></div>
-            <div class="mb-2">Waktu: <strong>20:05</strong></div>
-            <div class="mb-2">Pendapatan: <strong>+83%</strong> = Rp25.620,00</div>
-            <div class="mb-2">Pendapat mayoritas: <span style="color: #00c176;">59%</span> naik, <span style="color: #ff4d4f;">41%</span> turun</div>
-            <div class="d-grid gap-2 mt-4">
-              <button class="btn btn-up btn-lg text-light" style="background-color: #00c176" onclick="addPoint(true)">⬆️ Naik</button>
-              <button class="btn btn-down btn-lg text-light" style="background-color: #ff4d4f" onclick="addPoint(false)">⬇️ Turun</button>
-            </div>
-          </div>
-        </div>
-      </div>
+            newRow.appendChild(newCell);
+            chartData.appendChild(newRow);
 
-    </div>
-  </div>
-</div>
-<script>
-    function addPoint(isUp) {
-        const chartData = document.getElementById("chart-data");
-
-        // Ambil nilai akhir dari elemen terakhir
-        const lastRow = chartData.lastElementChild;
-        const lastEnd = lastRow ? parseFloat(lastRow.firstElementChild.style.getPropertyValue("--end")) : 0.5;
-
-        // Tentukan nilai baru (0.1 - 1.0)
-        let newEnd = isUp ? lastEnd + 0.3 : lastEnd - 0.3;
-        newEnd = Math.min(Math.max(newEnd, 0.1), 1.0); // Jaga agar tetap dalam batas
-
-        // Buat elemen baru
-        const newRow = document.createElement("tr");
-        const newCell = document.createElement("td");
-        newCell.classList.add(isUp ? "up" : "down");
-        newCell.style.setProperty("--start", lastEnd);
-        newCell.style.setProperty("--end", newEnd);
-        newRow.appendChild(newCell);
-        chartData.appendChild(newRow);
-    }
-</script>
+            // Auto-scroll to latest data point
+            chartData.parentElement.scrollLeft = chartData.parentElement.scrollWidth;
+        }
+    </script>
 </body>
 </html>

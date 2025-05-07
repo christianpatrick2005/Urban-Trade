@@ -27,6 +27,15 @@ Route::get('login', [HomeController::class, 'showLoginForm'])->name('login');
 // Route to handle login
 Route::post('login', [HomeController::class, 'login'])->name('login.submit');
 
+Route::get('profile', function () {
+    return view('userinterface/profile');
+})->name('profile');
+
+Route::get('editprofile', function () {
+    return view('userinterface/editprofile');
+})->name('editprofile');
+
+
 Route::get('home', function () {
     return view('userinterface/home');
 })->name('home');
