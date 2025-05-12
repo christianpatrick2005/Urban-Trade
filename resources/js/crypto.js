@@ -82,6 +82,26 @@ function getBitcoinPrice() {
         });
 }
 
+function updateBTCInfo() {
+    axios.get('/api/bitcoin')
+        .then(response => {
+            const btc = response.data.bitcoin;
+
+            const priceNow = btc.idr;
+            const priceChangePercent = btc.idr_24h_change ?? 0;
+            const btcVolume = btc.total_volume?.idr ?? 0;
+
+            document.getElementById('btc-price').innerText = `Rp ${priceNow.toLocaleString('id-ID')}`;
+            document.getElementById('btc-change').innerText = `${priceChangePercent.toFixed(2)}%`;
+            document.getElementById('btc-change').className = priceChangePercent >= 0 ? 'text-success' : 'text-danger';
+
+            document.getElementById('btc-volume').innerText = `${btcVolume.toLocaleString()} IDR`;
+        })
+        .catch(error => {
+            console.error('Gagal ambil data BTC:', error);
+        });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     fetchCryptoData();
     fetchMarketData();
@@ -89,4 +109,6 @@ document.addEventListener('DOMContentLoaded', () => {
     setInterval(fetchCryptoData, 20000); // Update tabel tiap 20 detik
     setInterval(getBitcoinPrice, 30000); // Update BTC price tiap 30 detik
     setInterval(fetchMarketData, 20000); // Update BTC price tiap 30 detik
+    updateBTCInfo();
+    setInterval(updateBTCInfo, 30000); // Update setiap 30 detik
 });

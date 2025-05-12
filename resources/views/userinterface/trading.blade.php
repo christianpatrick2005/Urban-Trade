@@ -107,7 +107,7 @@
     <div class="container-fluid">
         <div class="row">
             <!-- Sidebar -->
-            <div class="col-1 sidebar">
+            {{-- <div class="col-1 sidebar">
                 <div class="d-flex flex-column align-items-center">
                     <div class="menu-icon">⏱️</div>
                     <div class="menu-icon">📊</div>
@@ -116,10 +116,10 @@
                     <div class="menu-icon">🎁</div>
                     <div class="menu-icon">⚙️</div>
                 </div>
-            </div>
+            </div> --}}
 
             <!-- Main Content -->
-            <div class="col-11 p-4">
+            <div class="col-13 p-4">
                 <!-- Header -->
                 <div class="header d-flex justify-content-between align-items-center mb-4">
                     <div class="d-flex align-items-center gap-3">
@@ -128,13 +128,13 @@
                     </div>
                     <div class="d-flex align-items-center gap-3">
                         <div class="d-flex align-items-center gap-2">
-                            <span class="text-muted">Saldo:</span>
+                            <span class="">Saldo:</span>
                             <span class="price-tag">Rp14.000.000</span>
                         </div>
-                        <button class="btn btn-warning d-flex align-items-center gap-2">
+                        <a class="btn btn-warning d-flex align-items-center gap-2" href="donasi">
                             <span>💰</span>
                             <span>Deposit</span>
-                        </button>
+                        </a>
                     </div>
                 </div>
 
@@ -144,8 +144,7 @@
                     <div class="col-lg-8">
                         <div class="chart-container">
                             <div class="d-flex justify-content-between align-items-center mb-4">
-                                <h5 class="mb-0">BTC/IDR • 1 Minute</h5>
-                                <div class="price-tag">641.8684</div>
+                                <h5 class="mb-0">BTC/IDR</h5>
                             </div>
                             
                             <div class="position-relative">
@@ -172,28 +171,18 @@
                             <div class="mb-4">
                                 <h5 class="mb-3">Order Details</h5>
                                 <div class="d-flex flex-column gap-3">
-                                    <div class="d-flex justify-content-between">
-                                        <span class="text-muted">Jumlah:</span>
-                                        <span class="fw-bold">Rp14.000</span>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <label for="stake-amount" class="form-label mb-0">Jumlah (Rp):</label>
+                                        <input type="range" id="stake-amount" class="form-range" min="5000" max="100000" step="1000" oninput="updateStakeValue(this.value)">
                                     </div>
-                                    <div class="d-flex justify-content-between">
-                                        <span class="text-muted">Waktu:</span>
-                                        <span class="fw-bold">20:05</span>
+                                    <div class="text-end mt-1">
+                                        <span id="stake-display" class="fw-bold">Rp 10.000</span>
                                     </div>
-                                    <div class="d-flex justify-content-between">
-                                        <span class="text-muted">Pendapatan:</span>
-                                        <span class="text-success fw-bold">+83%</span>
-                                    </div>
-                                </div>
-                            </div>
 
-                            <div class="mb-4">
-                                <div class="progress-bar">
-                                    <div class="progress-fill bg-success" style="width: 59%"></div>
-                                </div>
-                                <div class="d-flex justify-content-between mt-2">
-                                    <small class="text-success">59% Naik</small>
-                                    <small class="text-danger">41% Turun</small>
+                                    <div class="d-flex justify-content-between">
+                                        <span class="">Pendapatan:</span>
+                                        <span class="text-success fw-bold"></span>
+                                    </div>
                                 </div>
                             </div>
 
@@ -211,15 +200,15 @@
                             <h5 class="mb-3">Market Info</h5>
                             <div class="d-flex flex-column gap-3">
                                 <div class="d-flex justify-content-between">
-                                    <span class="text-muted">Volume 24h:</span>
-                                    <span>Rp 2.4T</span>
+                                    <span>Volume 24h:</span>
+                                    <span id="btc-volume">Loading...</span>
                                 </div>
                                 <div class="d-flex justify-content-between">
-                                    <span class="text-muted">Perubahan 24h:</span>
-                                    <span class="text-success">+3.2%</span>
-                                </div>
+                                    <span>Perubahan 24h:</span>
+                                    <span id="btc-change" class="text-success">Loading...</span>
+                                </div>                                
                                 <div class="d-flex justify-content-between">
-                                    <span class="text-muted">Likuiditas:</span>
+                                    <span class="">Likuiditas:</span>
                                     <span class="text-warning">Tinggi</span>
                                 </div>
                             </div>
@@ -263,5 +252,14 @@
             chartData.parentElement.scrollLeft = chartData.parentElement.scrollWidth;
         }
     </script>
+
+    <script>
+        function updateStakeValue(value) {
+            document.getElementById('stake-display').innerText = `Rp ${parseInt(value).toLocaleString('id-ID')}`;
+        }
+    </script>
+
+
+    @vite(['resources/js/crypto.js'])
 </body>
 </html>
