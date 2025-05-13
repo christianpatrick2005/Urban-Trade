@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\transaksi;
 use App\Http\Controllers\Api\ApiController;
+use App\Models\Transaksi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 
@@ -29,7 +29,7 @@ class transaksiController extends ApiController
         $nohp = $request->nohp;
         $metode = $request->metode;
 
-        $transaksi = new transaksi;
+        $transaksi = new Transaksi;
         $transaksi->nama = $nama;
         $transaksi->email = $email;
         $transaksi->nominal = $nominal;
@@ -84,7 +84,7 @@ class transaksiController extends ApiController
             die("Akses dilarang");
         }
 
-        $transaksi = transaksi::where('invoice', $result->merchant_ref)-> first();
+        $transaksi = Transaksi::where('invoice', $result->merchant_ref)-> first();
 
         if($transaksi) {
             if($result->status == "PAID") {

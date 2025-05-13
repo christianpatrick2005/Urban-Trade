@@ -40,6 +40,24 @@
             transform: translateY(-2px);
             box-shadow: 0 4px 15px rgba(0,200,83,0.3);
         }
+        .payment-method-card {
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .payment-method-card:hover {
+            border-color: #00c853;
+            background-color: #2d2d2d;
+        }
+
+        .payment-logo {
+            filter: brightness(0.9);
+            transition: filter 0.2s ease;
+        }
+
+        .payment-method-card:hover .payment-logo {
+            filter: brightness(1.2);
+        }
     </style>
 </head>
 
@@ -111,11 +129,8 @@
                                 <div class="col-md-6">
                                     <div class="form-check card p-3 bg-dark border-secondary">
                                         <input class="form-check-input" type="radio" name="metode" 
-                                               id="{{ $m->code }}" value="{{ $m->code }}" required>
-                                        <label class="form-check-label d-flex align-items-center" 
-                                               for="{{ $m->code }}">
-                                            <img src="{{ asset('payment-icons/' . $m->code . '.png') }}" 
-                                                 alt="{{ $m->name }}" class="me-2" width="30">
+                                            id="{{ $m->code }}" value="{{ $m->code }}" required>
+                                        <label class="form-check-label text-white" for="{{ $m->code }}">
                                             {{ $m->name }}
                                         </label>
                                     </div>

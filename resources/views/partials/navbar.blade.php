@@ -59,7 +59,7 @@
             <div class="collapse navbar-collapse mx-5" id="mainNav">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="home">Home</a>
+                        <a class="nav-link " aria-current="page" href="home">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/market">Market</a>
