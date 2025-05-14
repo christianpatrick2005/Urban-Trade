@@ -5,27 +5,22 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\HomeController;
 
-// Halaman Register
-Route::get('register', function () {
-    return view('userinterface/register');
+// Form Register & Proses
+Route::get('/register', function () {
+    return view('userinterface.register');
 })->name('register');
 
-// Proses Register
-Route::post('register', [RegistrationController::class, 'store'])->name('register.store');
+Route::post('/register', [RegistrationController::class, 'store'])->name('register.store');
 
-Route::get('/', function () {
-    return view('userinterface/login');
-});
+// Form Login & Proses
+Route::get('/login', [HomeController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [HomeController::class, 'login'])->name('login.submit');
 
-Route::get('register', function () {
-    return view('userinterface/register');
-})->name('register');
+// Halaman Home (setelah login)
+Route::get('/home', [HomeController::class, 'home'])->name('home')->middleware('auth');
 
-// Route for login form
-Route::get('login', [HomeController::class, 'showLoginForm'])->name('login');
-
-// Route to handle login
-Route::post('login', [HomeController::class, 'login'])->name('login.submit');
+// Logout
+Route::post('/logout', [HomeController::class, 'logout'])->name('logout');
 
 Route::get('profile', function () {
     return view('userinterface/profile');

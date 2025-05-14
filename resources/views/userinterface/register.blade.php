@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,14 +7,13 @@
     <link rel="icon" type="image/svg+xml" href="{{ asset('images/logo.png') }}">
     <title>Daftar Akun</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ asset('css/Css_khusus.css') }}">
 </head>
 <body class="bg-pan-left">
     <div class="container">
         <div class="row">
             <div class="col-md-6 offset-md-3">
                 <h2 class="text-center mt-5 text-flicker-in-glow">Registration Form</h2>
-                <div class="card my-5" style="background-color: whitesmoke">
+                <div class="card my-5" data-bs-theme="light" style="background-color: whitesmoke">
                     {{-- sementara agar halaman home dpt diakses pake action dan get method --}}
                     <form class="card-body cardbody-color p-lg-5" action="{{ route('register.store') }}" method="POST" id="registrationForm">
                         @csrf
@@ -51,7 +50,7 @@
                     
                         {{-- input nama rekening bank --}}
                         <div class="mb-3">
-                            <input type="text" class="form-control" id="bank_name" name="account_name" placeholder="Nama Rekening Bank" required>
+                            <input type="text" class="form-control" id="account_name" name="account_name" placeholder="Nama Rekening Bank" required>
                         </div>
                     
                         {{-- input Email --}}
@@ -61,7 +60,7 @@
                     
                         {{-- tombol login --}}
                         <div class="text-center mt-5">
-                            <button type="submit" class="btn btn-color px-5 w-100 text-light" style="background-color: #2b0b70">Buat Akun</button>
+                            <button type="submit" class="btn btn-color px-5 w-100 text-light bg-dark">Buat Akun</button>
                         </div>
                     </form>
                     
