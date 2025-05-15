@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use Illuminate\Support\Facades\Log;
+
 
 class HomeController extends Controller
 {
@@ -13,7 +15,7 @@ class HomeController extends Controller
      */
     public function showLoginForm()
     {
-        return view('login');
+        return view('userinterface.login');
     }
 
     /**
@@ -21,6 +23,17 @@ class HomeController extends Controller
      */
     public function login(Request $request)
     {
+
+        if (Auth::attempt([
+            'username' => $request->input('username'),
+            'password' => $request->input('password')
+        ], $request->filled('remember'))) {
+            // Tambahkan debug:
+            Log::info('Login berhasil: ' . Auth::user()->username);
+            return redirect()->route('home');
+        }
+
+
         // Validasi input
         $request->validate([
             'username' => 'required|string',
@@ -35,6 +48,8 @@ class HomeController extends Controller
             // Jika login berhasil, redirect ke halaman yang diinginkan
             return redirect()->route('home');
         }
+
+        Log::warning('Login gagal untuk username: ' . $request->input('username'));
 
         // Jika login gagal, kembalikan error
         return back()->withErrors([
@@ -64,9 +79,6 @@ class HomeController extends Controller
             return redirect()->route('login'); // Jika tidak ada pengguna yang login, redirect ke login page
         }
 
-        // Debug: Pastikan data pengguna sudah benar
-        dd($user); // Ini akan menampilkan data pengguna yang login
-
-        return view('home', compact('user')); // Kirim data pengguna ke view 'home'
+        return view('userinterface.home', compact('user')); // Kirim data pengguna ke view 'home'
     }
 }

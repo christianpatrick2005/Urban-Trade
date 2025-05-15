@@ -40,8 +40,13 @@
     <div class="container my-5">
         <div class="profile-section">
             <div class="text-center mb-4">
-                <img src="/path/to/profile-image.jpg" alt="Profile Photo" class="profile-img rounded-circle">
-                <h2 class="mt-3">@username</h2>
+                <img src="{{ asset(Auth::user()->profile_photo ?? 'https://img.freepik.com/premium-vector/default-avatar-profile-icon-social-media-user-image-gray-avatar-icon-blank-profile-silhouette-vector-illustration_561158-3383.jpg') }}" alt="Profile Photo" class="profile-img rounded-circle">
+                @if(Auth::check())
+                    <h2>{{ Auth::user()->username }}</h2>
+                @else
+                    <script>window.location.href = "{{ route('login') }}";</script>
+                @endif
+
             </div>
 
             <div class="row justify-content-center">
@@ -49,22 +54,22 @@
                     <ul class="list-group">
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                             Nomor Telepon
-                            <span class="">+62 812-3456-7890</span>
+                            <span class="">{{ Auth::user()->phone }}</span>
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                             Email
-                            <span class="">user@example.com</span>
+                            <span class="">{{ Auth::user()->email }}</span>
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                             Nomor Rekening
-                            <span class="">1234 5678 9012 3456</span>
+                            <span class="">{{ Auth::user()->bank_account }}</span>
                         </li>
                     </ul>
 
                     <div class="card mt-4">
                         <div class="card-body text-center">
                             <h5 class="card-title text-white">Saldo</h5>
-                            <h2 class="card-text text-success">Rp 15.000.000,00</h2>
+                            <h2 class="card-text text-success">Rp {{ number_format(Auth::user()->saldo, 2, ',', '.') }}</h2>
                         </div>
                     </div>
                 </div>

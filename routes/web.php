@@ -5,6 +5,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\HomeController;
 
+Route::get('/', function () {
+    return view('userinterface/login');
+})->name('login');
+
 // Form Register & Proses
 Route::get('/register', function () {
     return view('userinterface.register');
@@ -24,16 +28,11 @@ Route::post('/logout', [HomeController::class, 'logout'])->name('logout');
 
 Route::get('profile', function () {
     return view('userinterface/profile');
-})->name('profile');
+})->middleware('auth');
 
 Route::get('editprofile', function () {
     return view('userinterface/editprofile');
 })->name('editprofile');
-
-
-Route::get('home', function () {
-    return view('userinterface/home');
-})->name('home');
 
 Route::get('chart', function () {
     return view('chart-css');

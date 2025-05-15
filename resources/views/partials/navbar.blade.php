@@ -25,13 +25,21 @@
             color: #fff !important;
             transform: translateY(-2px);
         }
+        .profile-img {
+            width: 32px;
+            height: 32px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+
     </style>
   
     <!-- Top Bar -->
     <div class="top-bar py-2" style="background: #1a1a1a">
         <div class="container d-flex justify-content-between align-items-center">
             <div class="text-white d-none d-md-block">
-                <i class="fas fa-wallet me-2"></i>Saldo: Rp 10.000
+                <i class="fas fa-wallet me-2"></i>Saldo: Rp {{ number_format(Auth::user()->saldo, 2, ',', '.') }}
             </div>
             
             <div class="d-flex align-items-center gap-3">
@@ -83,9 +91,10 @@
                                 type="button" 
                                 data-bs-toggle="dropdown"
                                 aria-expanded="false">
-                            <i class="fas fa-user-circle me-2"></i>
-                            <img src="" class="img-fluid" alt="">
-                            Username
+                            <img src="{{ asset(Auth::user()->profile_photo ?? 'https://img.freepik.com/premium-vector/default-avatar-profile-icon-social-media-user-image-gray-avatar-icon-blank-profile-silhouette-vector-illustration_561158-3383.jpg') }}" 
+                                alt="Profile Photo" 
+                                class="profile-img">
+                            <span class="ms-2">{{ Auth::user()->username }}</span>
                         </button>
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li>
