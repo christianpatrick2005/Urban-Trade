@@ -50,11 +50,11 @@
                     <div class="col-md-8">
                         <!-- Profile Photo Upload -->
                         <div class="text-center mb-4">
-                            <img src="/path/to/profile-image.jpg" alt="Profile Photo" 
+                            <img src="{{ asset(Auth::user()->profile_photo ?? 'https://img.freepik.com/premium-vector/default-avatar-profile-icon-social-media-user-image-gray-avatar-icon-blank-profile-silhouette-vector-illustration_561158-3383.jpg') }}"  
                                  class="profile-img-edit rounded-circle mb-2"
                                  onclick="document.getElementById('profilePhoto').click()">
                             <input type="file" id="profilePhoto" hidden accept="image/*">
-                            <p class="text-muted">Klik foto untuk mengubah</p>
+                            <p class="">Klik foto untuk mengubah</p>
                         </div>
 
                         <!-- Form Fields -->

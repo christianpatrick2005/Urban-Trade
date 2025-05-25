@@ -25,7 +25,7 @@
             color: #fff !important;
             transform: translateY(-2px);
         }
-        .profile-img {
+        .navbar-profile-img {
             width: 32px;
             height: 32px;
             object-fit: cover;
@@ -93,7 +93,7 @@
                                 aria-expanded="false">
                             <img src="{{ asset(Auth::user()->profile_photo ?? 'https://img.freepik.com/premium-vector/default-avatar-profile-icon-social-media-user-image-gray-avatar-icon-blank-profile-silhouette-vector-illustration_561158-3383.jpg') }}" 
                                 alt="Profile Photo" 
-                                class="profile-img">
+                                class="navbar-profile-img">
                             <span class="ms-2">{{ Auth::user()->username }}</span>
                         </button>
                         <ul class="dropdown-menu dropdown-menu-end">

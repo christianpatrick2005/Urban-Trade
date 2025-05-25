@@ -19,8 +19,8 @@
             border-radius: 15px;
         }
         .profile-img {
-            width: 150px;
-            height: 150px;
+            width: 350px !important;
+            height: 350px !important;
             object-fit: cover;
         }
         .card {
