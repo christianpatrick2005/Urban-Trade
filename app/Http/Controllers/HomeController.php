@@ -71,14 +71,15 @@ class HomeController extends Controller
      */
     public function home()
     {
+        
         // Ambil data pengguna yang sedang login
-        $user = Auth::user(); // Dapatkan pengguna yang sedang login
+        $user = Auth::user();
 
         // Pastikan data pengguna sudah ada
         if (!$user) {
-            return redirect()->route('login'); // Jika tidak ada pengguna yang login, redirect ke login page
+            return redirect()->route('login');
         }
 
-        return view('userinterface.home', compact('user')); // Kirim data pengguna ke view 'home'
+        return view('userinterface.home', compact('user'));
     }
 }

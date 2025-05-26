@@ -39,7 +39,7 @@
     <div class="top-bar py-2" style="background: #1a1a1a">
         <div class="container d-flex justify-content-between align-items-center">
             <div class="text-white d-none d-md-block">
-                <i class="fas fa-wallet me-2"></i>Saldo: Rp {{ number_format(Auth::user()->saldo, 2, ',', '.') }}
+                <i id="saldo" class="fas fa-wallet me-2"></i>Saldo: Rp {{ number_format(Auth::user()->saldo, 2, ',', '.') }}
             </div>
             
             <div class="d-flex align-items-center gap-3">

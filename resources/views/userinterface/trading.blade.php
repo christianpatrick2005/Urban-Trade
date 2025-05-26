@@ -127,10 +127,10 @@
                         <span class="badge bg-success">83% Profit</span>
                     </div>
                     <div class="d-flex align-items-center gap-3">
-                        <div class="d-flex align-items-center gap-2">
+                        {{-- <div class="d-flex align-items-center gap-2">
                             <span class="">Saldo:</span>
                             <span class="price-tag">Rp14.000.000</span>
-                        </div>
+                        </div> --}}
                         <a class="btn btn-warning d-flex align-items-center gap-2" href="donasi">
                             <span>💰</span>
                             <span>Deposit</span>
@@ -171,6 +171,7 @@
                             <div class="mb-4">
                                 <h5 class="mb-3">Order Details</h5>
                                 <div class="d-flex flex-column gap-3">
+                                    {{-- range --}}
                                     <div class="d-flex justify-content-between align-items-center">
                                         <label for="stake-amount" class="form-label mb-0">Jumlah (Rp):</label>
                                         <input type="range" id="stake-amount" class="form-range" min="5000" max="100000" step="1000" oninput="updateStakeValue(this.value)">
@@ -187,11 +188,11 @@
                             </div>
 
                             <div class="d-grid gap-3">
-                                <button class="btn-trade bg-success" onclick="addPoint(true)">
-                                    ⬆️ Naik (+83%)
+                                <button type="button" class="btn btn-trade bg-success" onclick="perhitungan() ;addPoint(true)">
+                                    ⬆️ Naik
                                 </button>
-                                <button class="btn-trade bg-danger" onclick="addPoint(false)">
-                                    ⬇️ Turun (-100%)
+                                <button type="button" class="btn btn-trade bg-danger" onclick="perhitungan() ;addPoint(false)">
+                                    ⬇️ Turun
                                 </button>
                             </div>
                         </div>
@@ -223,14 +224,40 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
+        let gacha = 0;
+
+        function perhitungan(isUp) {
+            let gacha = Math.floor(Math.random() * 2)
+            let saldo = document.getElementById("saldo");
+            let currentsaldo = Number(saldo.innerText.replace(/[^0-9]/g, ''));
+            let taruhan = document.getElementById("stake-display");
+            let currenttaruhan = Number(taruhan.innerText.replace(/[^0-9]/g, ''));
+
+            if (gacha === 1) {
+                saldo.innerText = isUp ? currentsaldo + currenttaruhan * 2 : currentsaldo - currenttaruhan;
+            }
+            else
+            {
+                saldo.innerText = isUp ? currentsaldo - currenttaruhan : currentsaldo + currenttaruhan * 2;
+            }
+        }
         function addPoint(isUp) {
             const chartData = document.getElementById("chart-data");
             const lastRow = chartData.lastElementChild;
             const lastEnd = lastRow ? parseFloat(lastRow.firstElementChild.style.getPropertyValue("--end")) : 0.5;
 
-            let newEnd = isUp ? 
-                Math.min(lastEnd + (Math.random() * 0.4), 1.0) : 
-                Math.max(lastEnd - (Math.random() * 0.4), 0.1);
+            let newEnd;
+
+            if (gacha === 1) {
+                newEnd = Math.min(lastEnd + (Math.random() * 0.4), 1.0)
+            }
+            else {
+                newEnd = Math.max(lastEnd - (Math.random() * 0.4), 0.1);
+            }
+
+            // let newEnd = isUp ? 
+            //     Math.min(lastEnd + (Math.random() * 0.4), 1.0) : 
+            //     Math.max(lastEnd - (Math.random() * 0.4), 0.1);
 
             const newRow = document.createElement("tr");
             const newCell = document.createElement("td");
@@ -253,6 +280,7 @@
         }
     </script>
 
+    {{-- script untuk range --}}
     <script>
         function updateStakeValue(value) {
             document.getElementById('stake-display').innerText = `Rp ${parseInt(value).toLocaleString('id-ID')}`;
