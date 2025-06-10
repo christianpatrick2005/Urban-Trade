@@ -39,7 +39,8 @@
     <div class="top-bar py-2" style="background: #1a1a1a">
         <div class="container d-flex justify-content-between align-items-center">
             <div class="text-white d-none d-md-block">
-                <i id="saldo" class="fas fa-wallet me-2"></i>Saldo: Rp {{ number_format(Auth::user()->saldo, 2, ',', '.') }}
+                Saldo: Rp
+                <i id="saldo" class="fas fa-wallet me-2"> {{ number_format(Auth::user()->saldo, 2, ',', '.') }} </i>
             </div>
             
             <div class="d-flex align-items-center gap-3">
@@ -109,9 +110,12 @@
                             </li>
                             <li><hr class="dropdown-divider"></li>
                             <li>
-                                <a class="dropdown-item text-danger" href="#">
-                                    <i class="fas fa-sign-out-alt me-2"></i>Keluar
-                                </a>
+                                <form method="POST" action="{{ route('logout') }}">
+                                    @csrf
+                                    <button type="submit" class="dropdown-item text-danger" style="background: none; border: none; padding: 0;">
+                                        <i class="fas fa-sign-out-alt me-2"></i>Keluar
+                                    </button>
+                                </form>
                             </li>
                         </ul>
                     </div>

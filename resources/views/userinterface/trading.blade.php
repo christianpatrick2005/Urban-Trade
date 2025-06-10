@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Trading Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/charts.css/dist/charts.min.css">
@@ -106,17 +107,6 @@
     
     <div class="container-fluid">
         <div class="row">
-            <!-- Sidebar -->
-            {{-- <div class="col-1 sidebar">
-                <div class="d-flex flex-column align-items-center">
-                    <div class="menu-icon">⏱️</div>
-                    <div class="menu-icon">📊</div>
-                    <div class="menu-icon">🏆</div>
-                    <div class="menu-icon">📅</div>
-                    <div class="menu-icon">🎁</div>
-                    <div class="menu-icon">⚙️</div>
-                </div>
-            </div> --}}
 
             <!-- Main Content -->
             <div class="col-13 p-4">
@@ -136,6 +126,9 @@
                             <span>Deposit</span>
                         </a>
                     </div>
+                </div>
+
+                <div id="liveAlertPlaceholder">
                 </div>
 
                 <!-- Trading Section -->
@@ -188,10 +181,10 @@
                             </div>
 
                             <div class="d-grid gap-3">
-                                <button type="button" class="btn btn-trade bg-success" onclick="perhitungan() ;addPoint(true)">
+                                <button type="button" class="btn btn-trade bg-success" onclick="handleTrade(true)">
                                     ⬆️ Naik
                                 </button>
-                                <button type="button" class="btn btn-trade bg-danger" onclick="perhitungan() ;addPoint(false)">
+                                <button type="button" class="btn btn-trade bg-danger" onclick="handleTrade(false)">
                                     ⬇️ Turun
                                 </button>
                             </div>
@@ -224,59 +217,93 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        let gacha = 0;
+        let lastEndValue = 0.2;
 
-        function perhitungan(isUp) {
-            let gacha = Math.floor(Math.random() * 2)
-            let saldo = document.getElementById("saldo");
-            let currentsaldo = Number(saldo.innerText.replace(/[^0-9]/g, ''));
-            let taruhan = document.getElementById("stake-display");
-            let currenttaruhan = Number(taruhan.innerText.replace(/[^0-9]/g, ''));
+        //function untuk fungsi alert
+        const alertPlaceholder = document.getElementById('liveAlertPlaceholder');
+        const appendAlert = (message, type) => {
+            alertPlaceholder.innerHTML = ''; 
+            const wrapper = document.createElement('div');
+            wrapper.innerHTML = [
+                `<div class="alert alert-${type} alert-dismissible" role="alert">`,
+                `   <div>${message}</div>`,
+                '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
+                '</div>'
+            ].join('');
 
-            if (gacha === 1) {
-                saldo.innerText = isUp ? currentsaldo + currenttaruhan * 2 : currentsaldo - currenttaruhan;
+            alertPlaceholder.append(wrapper);
+        }
+
+        function handleTrade(isUp) {
+            const gachaResult = Math.floor(Math.random() * 2); // 0 atau 1
+
+            //ambil nilai-nilai
+            const saldoElement = document.getElementById("saldo");
+            let currentSaldo = parseFloat(saldoElement.innerText.replace(/\./g, '').replace(',', '.'));
+            const taruhanElement = document.getElementById("stake-display");
+            let currentTaruhan = Number(taruhanElement.innerText.replace(/[^0-9]/g, ''));
+
+            if (currentTaruhan <= currentSaldo)
+            {
+                const isGuessCorrect = (isUp && gachaResult === 1) || (!isUp && gachaResult === 0);
+
+                //mekanisme pendeteksi benar salah
+                if (isGuessCorrect) {
+                    // console.log("Menang!");
+                    currentSaldo += (currentTaruhan * 2);
+                } else {
+                    // console.log("Kalah!");
+                    currentSaldo -= currentTaruhan;
+                }
+                saldoElement.innerText = `${Math.round(currentSaldo).toLocaleString('id-ID')}`;
+
+                const chartData = document.getElementById("chart-data");
+                const startValue = lastEndValue;
+                let newEndValue;
+
+                if (gachaResult === 1) { 
+                    newEndValue = Math.min(startValue + (Math.random() * 0.4), 1.0);
+                } else {
+                    newEndValue = Math.max(startValue - (Math.random() * 0.4), 0.1);
+                }
+
+                const newRow = document.createElement("tr");
+                const newCell = document.createElement("td");
+                
+                newCell.classList.add(newEndValue > startValue ? "up" : "down");
+                
+                newCell.style.setProperty("--start", startValue);
+                newCell.style.setProperty("--end", newEndValue);
+                
+                newRow.appendChild(newCell);
+                chartData.appendChild(newRow);
+
+                lastEndValue = newEndValue;
+
+                // Auto-scroll
+                chartData.parentElement.scrollLeft = chartData.parentElement.scrollWidth;
             }
             else
             {
-                saldo.innerText = isUp ? currentsaldo - currenttaruhan : currentsaldo + currenttaruhan * 2;
-            }
-        }
-        function addPoint(isUp) {
-            const chartData = document.getElementById("chart-data");
-            const lastRow = chartData.lastElementChild;
-            const lastEnd = lastRow ? parseFloat(lastRow.firstElementChild.style.getPropertyValue("--end")) : 0.5;
-
-            let newEnd;
-
-            if (gacha === 1) {
-                newEnd = Math.min(lastEnd + (Math.random() * 0.4), 1.0)
-            }
-            else {
-                newEnd = Math.max(lastEnd - (Math.random() * 0.4), 0.1);
+                appendAlert(`Saldo Anda tidak cukup! (Saldo: ${currentSaldo.toLocaleString('id-ID')}, Taruhan: ${currentTaruhan.toLocaleString('id-ID')})`, 'danger');
             }
 
-            // let newEnd = isUp ? 
-            //     Math.min(lastEnd + (Math.random() * 0.4), 1.0) : 
-            //     Math.max(lastEnd - (Math.random() * 0.4), 0.1);
-
-            const newRow = document.createElement("tr");
-            const newCell = document.createElement("td");
-            newCell.classList.add(isUp ? "up" : "down");
-            newCell.style.setProperty("--start", lastEnd);
-            newCell.style.setProperty("--end", newEnd);
-            
-            // Add animation
-            newCell.style.opacity = "0";
-            setTimeout(() => {
-                newCell.style.opacity = "1";
-                newCell.style.transition = "opacity 0.3s ease";
-            }, 10);
-
-            newRow.appendChild(newCell);
-            chartData.appendChild(newRow);
-
-            // Auto-scroll to latest data point
-            chartData.parentElement.scrollLeft = chartData.parentElement.scrollWidth;
+            //mekanisme update data saldo ke db
+            fetch("{{ route('game.updateSaldo') }}", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').getAttribute("content")
+                },
+                body: JSON.stringify({ saldo: currentSaldo })
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log("Saldo berhasil diperbarui:", data.message);
+            })
+            .catch(error => {
+                console.error("Gagal memperbarui saldo:", error);
+            });
         }
     </script>
 

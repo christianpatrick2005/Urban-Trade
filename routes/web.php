@@ -1,4 +1,6 @@
 <?php
+
+use App\Http\Controllers\GameController;
 use Illuminate\Support\Facades\Http;
 use App\Http\Controllers\transaksiController;
 use Illuminate\Support\Facades\Route;
@@ -41,6 +43,8 @@ Route::get('chart', function () {
 Route::get('trading', function () {
     return view('userinterface/trading');
 });
+
+Route::post('/update-saldo', [GameController::class, 'updateSaldo'])->name('game.updateSaldo');
 
 Route::get('market', function () {
     return view('userinterface/markets');
