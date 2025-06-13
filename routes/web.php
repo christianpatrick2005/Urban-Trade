@@ -42,7 +42,11 @@ Route::get('chart', function () {
 
 Route::get('trading', function () {
     return view('userinterface/trading');
-});
+})->name('auth');
+
+Route::get('withdraw', function () {
+    return view('userinterface/withdraw');
+})->name('auth');
 
 Route::post('/update-saldo', [GameController::class, 'updateSaldo'])->name('game.updateSaldo');
 
