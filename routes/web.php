@@ -54,6 +54,12 @@ Route::get('market', function () {
     return view('userinterface/markets');
 });
 
+
+Route::get('/callback', function () {
+    return view('callback');
+})->name('callback.page');
+
+
 // Route::get('/','transaksiController@index') -> name('index');
 Route::get('donasi', [transaksiController::class, 'index'])->name('index');
 

@@ -75,7 +75,7 @@
                             </div>
 
                             <div class="mt-4">
-                                <button type="submit" onclick="sendWA()" class="btn btn-primary mb-3">Kirim via WhatsApp</button>
+                                <button type="button" onclick="sendWA()" class="btn btn-primary mb-3">Kirim via WhatsApp</button>
                             </div>
                         </form>
                     </div>
@@ -97,7 +97,7 @@
         });
 
         function sendWA() {
-            const message = document.getElementById("message").value;
+            const message = document.getElementById("infoText").textContent;
             const phoneNumber = {{ Auth::user()->phone }};
 
             const encodedMessage = encodeURIComponent(message);

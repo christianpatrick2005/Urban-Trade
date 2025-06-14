@@ -85,7 +85,7 @@
                                     <span class="input-group-text bg-dark border-dark">
                                         <i class="fas fa-user"></i>
                                     </span>
-                                    <input type="text" name="nama" class="form-control" required>
+                                    <input type="text" class="form-control" name="nama" readonly value="{{ Auth::user()->username }}">
                                 </div>
                             </div>
 
@@ -95,7 +95,7 @@
                                     <span class="input-group-text bg-dark border-dark">
                                         <i class="fas fa-envelope"></i>
                                     </span>
-                                    <input type="email" name="email" class="form-control" required>
+                                    <input type="text" class="form-control" name="email" readonly value="{{ Auth::user()->email }}">
                                 </div>
                             </div>
 
@@ -105,12 +105,12 @@
                                     <span class="input-group-text bg-dark border-dark">
                                         <i class="fas fa-phone"></i>
                                     </span>
-                                    <input type="text" name="nohp" class="form-control" required>
+                                    <input type="text" class="form-control" name="nohp" readonly value="{{ Auth::user()->phone }}">
                                 </div>
                             </div>
 
                             <div class="mb-4">
-                                <label class="form-label text-white">Nominal Donasi</label>
+                                <label class="form-label text-white">Nominal Deposit</label>
                                 <div class="input-group">
                                     <span class="input-group-text bg-dark border-dark">
                                         <i class="fas fa-coins"></i>
@@ -141,7 +141,7 @@
                             <div class="d-grid">
                                 <button type="submit" class="btn btn-gradient btn-lg py-3">
                                     <i class="fas fa-donate me-2"></i>
-                                    Lanjutkan Donasi
+                                    Lanjutkan Transaksi
                                 </button>
                             </div>
                         </form>
