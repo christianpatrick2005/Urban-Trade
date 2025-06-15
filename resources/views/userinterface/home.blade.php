@@ -182,7 +182,7 @@
       <div class="col-lg-4 col-md-6">
           <div class="card h-100 border-3 border-success bg-dark-transparent hover-scale shadow-lg">
               <div class="card-img-top position-relative overflow-hidden">
-                  <img src="https://res.cloudinary.com/rey0303/image/upload/v1727615283/judibola.xyz_dpavqm.png" 
+                  <img src="https://xtb.scdn5.secure.raxcdn.com/kb_main_photo/0102/92/9ecbe35a-70bc-4b2e-80aa-74c65b57e09f/kb_main_photo_front/1-trading-what-is-it.png" 
                        class="img-fluid w-100" 
                        style="height: 250px; object-fit: cover"
                        alt="Trading">
@@ -205,7 +205,7 @@
       <div class="col-lg-4 col-md-6">
           <div class="card h-100 border-3 border-success bg-dark-transparent hover-scale shadow-lg">
               <div class="card-img-top position-relative overflow-hidden">
-                  <img src="https://img.viva88athenae.com/pp/images/vs5triple8gold.png" 
+                  <img src="https://img.wirexapp.com/image/upload/q_80/dpr_auto/f_auto/v1/wirexapp/wirex50/upload/miej3ugbsxsuqhijxlxj.png" 
                        class="img-fluid w-100" 
                        style="height: 250px; object-fit: cover"
                        alt="Market">
@@ -228,7 +228,7 @@
       <div class="col-lg-4 col-md-6">
           <div class="card h-100 border-3 border-success bg-dark-transparent hover-scale shadow-lg">
               <div class="card-img-top position-relative overflow-hidden">
-                  <img src="https://img.viva88athenae.com/mg/images/smg_treasurestacks_icon_square_250x250_en.png" 
+                  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJfjHN-n8lSKjNwJWYUrvxIIwFp78Gv5ezCQ&s" 
                        class="img-fluid w-100" 
                        style="height: 250px; object-fit: cover"
                        alt="Deposit">

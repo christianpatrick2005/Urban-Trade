@@ -56,7 +56,7 @@
         <div class="container">
             <!-- Logo -->
             <a class="navbar-brand" href="#">
-                <img src="{{ asset('images/logo dgn tulisan.png') }}" alt="Logo" height="40">
+                <img src="{{ asset('images/logo dgn tulisan.png') }}" alt="Logo" height="50">
             </a>
   
             <!-- Toggler Button -->
