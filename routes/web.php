@@ -7,9 +7,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\HomeController;
 
-Route::get('/', function () {
-    return view('userinterface/login');
-})->name('login');
+// Route::get('/', function () {
+//     return view('userinterface/login');
+// })->name('login');
 
 // Form Register & Proses
 Route::get('/register', function () {

@@ -24,19 +24,27 @@ class transaksiController extends ApiController
     }
 
     public function proccess(Request $request) {
-        $nama = $request->nama;
-        $email = $request->email;
-        $nominal = $request->nominal;
-        $nohp = $request->nohp;
-        $metode = $request->metode;
+        if (!Auth::check()) {
+            return redirect()->route('login')->withErrors('Silakan login terlebih dahulu');
+        }
 
+        // Validasi input
+        $request->validate([
+            'nama' => 'required|string|max:255',
+            'email' => 'required|email',
+            'nominal' => 'required|numeric|min:1000',
+            'nohp' => 'required|string',
+            'metode' => 'required|string',
+        ]);
+
+        // Simpan transaksi
         $transaksi = new Transaksi;
-        $transaksi->user_id = Auth::id();
-        $transaksi->nama = $nama;
-        $transaksi->email = $email;
-        $transaksi->nominal = $nominal;
-        $transaksi->nohp = $nohp;
-        $transaksi->invoice = "depo_" . rand(20, 200);
+        $transaksi->user_id = Auth::user()->id;
+        $transaksi->nama = $request->nama;
+        $transaksi->email = $request->email;
+        $transaksi->nominal = $request->nominal;
+        $transaksi->nohp = $request->nohp;
+        $transaksi->invoice = "depo_" . rand(10000, 99999);
         $transaksi->save();
 
         $merchantRef = $transaksi->invoice;//your merchant reference
@@ -47,7 +55,7 @@ class transaksiController extends ApiController
         $signature = $init->createSignature();
         $transaction = $init->closeTransaction(); // define your transaction type, for close transaction use `closeTransaction()`
         $transaction->setPayload([
-            'method'            => $metode, // IMPORTANT, dont fill by `getMethod()`!, for more code method you can check here https://tripay.co.id/developer
+            'method'            => $request->metode,// IMPORTANT, dont fill by `getMethod()`!, for more code method you can check here https://tripay.co.id/developer
             'merchant_ref'      => $merchantRef,
             'amount'            => $init->getAmount(),
             'customer_name'     => $transaksi->nama,

@@ -36,6 +36,8 @@
                                 <input type="number" class="form-control" id="message">
                             </div>
 
+                            <div id="AlertPlaceholder"></div>
+
                             <ul class="list-group mb-4">
                                 <li class="list-group-item d-flex justify-content-between align-items-center">
                                     Username
@@ -86,7 +88,23 @@
     <script>
         const messageInput = document.getElementById("message");
         const nominalText = document.getElementById("nominalText");
+        const alertPlaceholder = document.getElementById('AlertPlaceholder');
+        const saldotersedia = {{ Auth::user()->saldo }}; // harus sudah di-render dari backend
 
+        // Fungsi tampilkan alert
+        const appendAlert = (message, type) => {
+            alertPlaceholder.innerHTML = '';
+            const wrapper = document.createElement('div');
+            wrapper.innerHTML = `
+                <div class="alert alert-${type} alert-dismissible" role="alert">
+                    <div>${message}</div>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            `;
+            alertPlaceholder.append(wrapper);
+        }
+
+        // Update nominal text secara live
         messageInput.addEventListener("input", function () {
             const value = this.value;
             if (value) {
@@ -97,15 +115,26 @@
         });
 
         function sendWA() {
+            const nominal = parseFloat(messageInput.value);
+
+            if (isNaN(nominal) || nominal <= 0) {
+                appendAlert("Masukkan nominal yang valid.", "warning");
+                return;
+            }
+
+            if (nominal > saldotersedia) {
+                appendAlert(`Saldo tidak cukup! (Saldo: Rp ${saldotersedia.toLocaleString('id-ID')}, Nominal: Rp ${nominal.toLocaleString('id-ID')})`, 'danger');
+                return;
+            }
+
             const message = document.getElementById("infoText").textContent;
-            const phoneNumber = {{ Auth::user()->phone }};
+            const phoneNumber = "{{ Auth::user()->phone }}"; // pakai tanda kutip agar tidak error JS
 
             const encodedMessage = encodeURIComponent(message);
-
             window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, '_blank');
-
         }
     </script>
+
     
     @include('partials/footer')
 
